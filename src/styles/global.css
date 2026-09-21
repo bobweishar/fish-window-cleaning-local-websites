@@ -198,7 +198,7 @@ nav a:hover::after { right: 0; }
 .path-panel span { display: block; max-width: 42ch; color: rgba(255,255,255,.74); }
 .path-panel strong { display: inline-flex; margin-top: 25px; border-bottom: 2px solid var(--red); padding-bottom: 5px; }
 .path-panel:hover img { transform: scale(1.035); }
-.more-services { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 22px; border-top: 3px solid var(--ink); }
+.more-services { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 22px; border-top: 3px solid var(--ink); }
 .more-services a { min-height: 104px; display: grid; grid-template-columns: 1fr auto; align-content: center; gap: 3px 20px; padding: 20px 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); text-decoration: none; }
 .more-services a:last-child { border-right: 0; }
 .more-services strong { font-family: var(--display); font-size: 18px; }
@@ -235,6 +235,9 @@ nav a:hover::after { right: 0; }
 
 .route-section { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(54px, 9vw, 120px); align-items: start; }
 .route-intro { position: sticky; top: 40px; }
+.place-photo { margin: 34px 0 0; }
+.place-photo img { width: 100%; height: clamp(240px, 23vw, 320px); object-fit: cover; border-radius: 14px; }
+.place-photo figcaption { margin-top: 8px; color: var(--charcoal); font-size: 11px; }
 .route-board { border-top: 4px solid var(--ink); }
 .route-board div { display: grid; grid-template-columns: 54px 1fr 32px; gap: 20px; align-items: center; min-height: 58px; border-bottom: 1px solid var(--rule); }
 .route-board span, .route-board small { color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: .08em; }

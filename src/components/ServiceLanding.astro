@@ -28,7 +28,6 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
   <section class:list={['service-hero', { 'service-hero--commercial': isCommercial }]}>
     <div class="service-hero-copy">
       <h1>{service.heroHeadline}</h1>
-      <p class="location-line">Serving Hinsdale, Illinois</p>
       <p>{service.heroCopy}</p>
       <div class="button-row">
         <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free estimate</a>
@@ -65,16 +64,8 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
     <figure><img src={service.localImage} alt={service.localAlt} loading="lazy" /></figure>
   </section>
 
-  <section class="local-service-proof section section--ink">
-    <div><h2>One Hinsdale-focused team from estimate to clean.</h2><p>Local phone number, uniformed crew, and the same franchise responsible for the finished work.</p></div>
-    <div class="local-service-proof__links">
-      <a href="/hinsdale/">More Hinsdale services <span aria-hidden="true">→</span></a>
-      <a href="/team/">Meet the local team <span aria-hidden="true">→</span></a>
-    </div>
-  </section>
-
   <section class="faq-section section">
-    <div class="section-heading"><h2>Before you book.</h2></div>
+    <div class="section-heading"><h2>Questions.</h2></div>
     <div class="faq-list">
       {service.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
     </div>

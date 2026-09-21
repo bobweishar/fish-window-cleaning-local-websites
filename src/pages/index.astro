@@ -5,7 +5,7 @@ import CustomerLogoStrip from '../components/CustomerLogoStrip.astro';
 import { estimateLink, googleProfile, site } from '../data/site';
 
 const faqs = [
-  ['Do you clean both Hinsdale homes and businesses?', 'Yes. The local team serves homes as well as downtown storefronts, offices, restaurants, and other commercial properties.'],
+  ['Do you clean both homes and businesses?', 'Yes. The local team serves homes as well as downtown storefronts, offices, restaurants, and other commercial properties.'],
   ['Can you work with older or divided-light windows?', 'Yes. Point out the window type during the estimate so the team can review construction, condition, access, and the right cleaning method.'],
   ['Can you schedule around downtown business hours?', 'Yes. Share opening hours and access details during the estimate so the team can plan storefront service around customers and staff.'],
   ['Do you only serve Hinsdale?', 'No. This site is built around Hinsdale, but the same local franchise also serves nearby communities in its official territory.'],
@@ -48,22 +48,9 @@ const faqs = [
     </figure>
   </section>
 
-  <section class="proof-rail" aria-label="Why local customers choose this team">
-    <p><strong>Robbins Park + historic homes</strong></p>
-    <p><strong>The Woodlands + larger glass</strong></p>
-    <p><strong>Downtown storefront routes</strong></p>
-    <p><strong>Mature trees + fall gutters</strong></p>
-  </section>
-
-  <section class="chicago-callout" data-reveal>
-    <p class="score-copy">Brick streets. Clear glass. Da local crew.</p>
-    <a href={estimateLink('home-chicago-strip')} data-track="estimate_click" data-location="home-chicago-strip">Get the house game-day ready <span aria-hidden="true">→</span></a>
-  </section>
-
   <section class="path-section section" aria-labelledby="choose-path">
     <div class="section-heading" data-reveal>
-      <h2 id="choose-path">What can we make clearer in Hinsdale?</h2>
-      <p>Choose care for the house, the storefront, or the seasonal exterior list.</p>
+      <h2 id="choose-path">Homes and businesses.</h2>
     </div>
     <div class="path-grid">
       <a class="path-panel path-panel--home" href="/hinsdale/residential-window-cleaning/" data-reveal>
@@ -84,29 +71,33 @@ const faqs = [
       </a>
     </div>
     <div class="more-services" data-reveal>
-      <a href="/hinsdale/gutter-cleaning/"><strong>Gutter cleaning</strong><span>Mature trees + Hinsdale leaf drop</span><b aria-hidden="true">→</b></a>
+      <a href="/hinsdale/gutter-cleaning/"><strong>Gutter cleaning</strong><span>Mature trees + heavy leaf drop</span><b aria-hidden="true">→</b></a>
       <a href="/hinsdale/pressure-washing/"><strong>Pressure washing</strong><span>Approved exterior surfaces</span><b aria-hidden="true">→</b></a>
-      <a href="/campaigns/fall-exterior-cleaning/"><strong>Fall exterior cleaning</strong><span>Windows + gutters + exterior details</span><b aria-hidden="true">→</b></a>
+    </div>
+  </section>
+
+  <section id="hinsdale-properties" class="route-section section section--mist">
+    <div class="route-intro" data-reveal>
+      <h2>The property changes block by block.</h2>
+      <p>Window type, tree cover, access, and business hours shape the estimate.</p>
+      <figure class="place-photo">
+        <img src="/images/local/downtown-hinsdale.jpg" width="3648" height="2118" alt="Historic storefronts and mature trees in downtown Hinsdale" loading="lazy" />
+        <figcaption>Downtown, near Washington Street · <a href="https://commons.wikimedia.org/wiki/File:Downtown_Hinsdale_Block.JPG" target="_blank" rel="noopener noreferrer">Photo: Teemu08 / CC BY-SA 3.0</a></figcaption>
+      </figure>
+    </div>
+    <div class="route-board" aria-label="Hinsdale property considerations" data-reveal>
+      <div><span>01</span><strong>Older homes + divided panes</strong><small>Robbins Park</small></div>
+      <div><span>02</span><strong>Larger glass + landscaped access</strong><small>The Woodlands</small></div>
+      <div><span>03</span><strong>Washington + Hinsdale Ave glass</strong><small>Downtown</small></div>
+      <div><span>04</span><strong>Mature canopy + leaf-heavy gutters</strong><small>Brick streets</small></div>
     </div>
   </section>
 
   <CustomerLogoStrip />
 
-  <section class="process-section section section--ink">
-    <div class="section-heading section-heading--light" data-reveal>
-      <h2>Four steps. No runaround.</h2>
-    </div>
-    <ol class="process-list">
-      <li data-reveal><span>01</span><h3>Tell us about the property</h3><p>Use the official estimate form or call the local number.</p></li>
-      <li data-reveal><span>02</span><h3>Confirm the scope</h3><p>The team reviews what needs cleaning and prepares the estimate.</p></li>
-      <li data-reveal><span>03</span><h3>Choose the timing</h3><p>Residential visit, storefront route, or recurring business schedule.</p></li>
-      <li data-reveal><span>04</span><h3>See the difference</h3><p>A professional clean from the same local operation you contacted.</p></li>
-    </ol>
-  </section>
-
   <section id="local-work" class="work-section section">
     <div class="section-heading" data-reveal>
-      <h2>Work from the team serving Hinsdale.</h2>
+      <h2>Recent local work.</h2>
     </div>
     <div class="work-grid">
       <figure class="work-tall" data-reveal><img src="/images/jobs/4260.jpg" width="476" height="720" alt="FISH professional cleaning an exterior coach light on a brick home" loading="lazy" /><figcaption>Exterior detail care</figcaption></figure>
@@ -122,8 +113,8 @@ const faqs = [
       <span>Dave Weishar<br />Local owner</span>
     </div>
     <div class="owner-copy" data-reveal>
-      <h2>National standards. Local accountability.</h2>
-      <p>This is a locally owned and operated FISH franchise—not a lead broker. Your call, estimate, and service stay with the local business and crew serving Hinsdale.</p>
+      <h2>Locally owned.</h2>
+      <p>This is a locally owned and operated FISH franchise—not a lead broker. Your call, estimate, and service stay with the same local business and crew.</p>
       <div class="owner-links">
         <a class="text-link" href="/team/">Meet the local team <span aria-hidden="true">→</span></a>
         <a class="quiet-link" href={googleProfile.url} target="_blank" rel="noopener noreferrer" data-track="google_reviews_click" data-location="home-owner">Google reviews <span aria-hidden="true">↗</span></a>
@@ -131,23 +122,9 @@ const faqs = [
     </div>
   </section>
 
-  <section id="hinsdale-properties" class="route-section section">
-    <div class="route-intro" data-reveal>
-      <h2>The property changes block by block.</h2>
-      <p>Window type, lot size, tree cover, access, and business hours shape the scope. That is the part a generic service page misses.</p>
-      <a class="text-link" href={estimateLink('home-hinsdale-details')}>Request a Hinsdale estimate <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="route-board" aria-label="Hinsdale property considerations" data-reveal>
-      <div><span>01</span><strong>Older homes + divided panes</strong><small>Robbins Park</small></div>
-      <div><span>02</span><strong>Larger glass + landscaped access</strong><small>The Woodlands</small></div>
-      <div><span>03</span><strong>Washington + Hinsdale Ave glass</strong><small>Downtown</small></div>
-      <div><span>04</span><strong>Mature canopy + leaf-heavy gutters</strong><small>Brick streets</small></div>
-    </div>
-  </section>
-
   <section id="faq" class="faq-section section">
     <div class="section-heading" data-reveal>
-      <h2>Straight answers before you call.</h2>
+      <h2>Questions.</h2>
     </div>
     <div class="faq-list">
       {faqs.map(([question, answer]) => (
@@ -159,5 +136,5 @@ const faqs = [
     </div>
   </section>
 
-  <EstimateBand source="home-close" heading="Put the Hinsdale property on the route." />
+  <EstimateBand source="home-close" heading="Request a free estimate." />
 </BaseLayout>
