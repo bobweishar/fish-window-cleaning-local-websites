@@ -448,6 +448,8 @@ nav a:hover::after { right: 0; }
 .crew-work-grid figcaption { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; justify-content: space-between; align-items: end; gap: 20px; padding: 12px 14px; background: rgba(255,255,255,.94); }
 .crew-work-grid figcaption strong { font-family: var(--display); font-size: 14px; }
 .crew-work-grid figcaption span { color: var(--charcoal); font-size: 11px; text-align: right; }
+.crew-work { padding-top: 0; }
+.crew-work .section-heading { margin-bottom: clamp(32px, 4vw, 52px); }
 
 .community-story { display: grid; grid-template-columns: 1.22fr .78fr; gap: clamp(58px, 10vw, 138px); align-items: center; }
 .community-story-copy h2 { max-width: 10ch; }
@@ -486,7 +488,10 @@ nav a:hover::after { right: 0; }
   .menu-toggle { display: block; }
   .hero { grid-template-columns: 1fr 1fr; }
   .hero-copy { padding-left: 40px; padding-right: 40px; }
-  .team-hero-copy { padding-inline: 38px; }
+  .team-hero { min-height: 0; grid-template-columns: 1fr; }
+  .team-hero-copy { min-height: 500px; padding: 64px max(38px, calc((100vw - 940px) / 2)); }
+  .team-hero-copy h1 { max-width: 11ch; }
+  .team-hero-gallery { min-height: 620px; grid-template-columns: minmax(0, 1.18fr) minmax(0, .82fr); padding-left: 12px; }
 }
 
 @media (max-width: 820px) {
@@ -510,7 +515,8 @@ nav a:hover::after { right: 0; }
   .more-services a { border-right: 0; }
   .campaign-hero figure { order: 2; }
   .campaign-callout { align-items: start; }
-  .team-hero-gallery { min-height: 650px; padding-left: 12px; }
+  .team-hero-copy { min-height: auto; }
+  .team-hero-gallery { min-height: 650px; }
   .team-intro-heading, .team-standards-intro { position: static; }
   .leader-portrait { max-width: 520px; }
   .leader-portrait > div { right: -8px; }
