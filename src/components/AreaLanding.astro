@@ -25,7 +25,6 @@ const primaryServices = services.filter((service) => ['residential-window-cleani
   <section class="local-hero">
     <div>
       <h1>{area.heroHeadline}</h1>
-      <p class="location-line">{area.name}, Illinois</p>
       <p>{area.heroCopy}</p>
       <div class="button-row">
         <a class="button" href={estimateLink(`${area.slug}-hero`)} data-track="estimate_click" data-location={`${area.slug}-hero`}>Request a {area.name} estimate</a>
@@ -40,7 +39,7 @@ const primaryServices = services.filter((service) => ['residential-window-cleani
   </section>
 
   <section class="hinsdale-services section section--mist">
-    <div class="section-heading"><h2>Local service paths.</h2></div>
+    <div class="section-heading"><h2>Choose a service.</h2></div>
     <div class="service-lines">
       {primaryServices.map((service) => {
         const localPage = localServices.find((item) => item.areaSlug === area.slug && item.serviceSlug === service.slug);
@@ -62,11 +61,11 @@ const primaryServices = services.filter((service) => ['residential-window-cleani
   </section>
 
   <section class="faq-section section">
-    <div class="section-heading"><h2>{area.name} questions.</h2></div>
+    <div class="section-heading"><h2>Questions.</h2></div>
     <div class="faq-list">
       {area.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
     </div>
   </section>
 
-  <EstimateBand source={`${area.slug}-close`} heading={`Put the ${area.name} property on the route.`} />
+  <EstimateBand source={`${area.slug}-close`} heading={`Request a free estimate in ${area.name}.`} />
 </BaseLayout>

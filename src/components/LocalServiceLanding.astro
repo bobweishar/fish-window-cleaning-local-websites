@@ -27,7 +27,6 @@ const source = `${page.areaSlug}-${page.serviceSlug}`;
   <section class="local-service-hero">
     <div class="local-service-hero__copy">
       <h1>{page.headline}</h1>
-      <p class="location-line">{service.name} · {area.name}, Illinois</p>
       <p>{page.copy}</p>
       <div class="button-row">
         <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free estimate</a>
@@ -38,22 +37,22 @@ const source = `${page.areaSlug}-${page.serviceSlug}`;
   </section>
 
   <section class="local-reasons section">
-    <div class="section-heading"><h2>Why this service fits the property.</h2></div>
+    <div class="section-heading"><h2>What the estimate covers.</h2></div>
     <div class="scope-grid">
       {page.reasons.map((reason) => <article><h3>{reason.title}</h3><p>{reason.copy}</p></article>)}
     </div>
   </section>
 
   <section class="local-service-proof section section--ink">
-    <div><h2>One local operation from estimate to clean.</h2><p>Uniformed crew, local phone number, and the same franchise responsible for the finished work.</p></div>
+    <div><h2>One team from estimate through service.</h2><p>The same franchise answers the phone, writes the estimate, and completes the work.</p></div>
     <div class="local-service-proof__links">
-      <a href={`/services/${service.slug}/`}>All {service.name.toLowerCase()} details <span aria-hidden="true">→</span></a>
+      <a href={`/services/${service.slug}/`}>{service.name} details <span aria-hidden="true">→</span></a>
       <a href={`/service-areas/${area.slug}/`}>More services in {area.name} <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
   <section class="faq-section section">
-    <div class="section-heading"><h2>{area.name} questions.</h2></div>
+    <div class="section-heading"><h2>Questions.</h2></div>
     <div class="faq-list">
       {page.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
     </div>

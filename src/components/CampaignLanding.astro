@@ -22,16 +22,16 @@ const { campaign } = Astro.props;
   </section>
 
   <section class="campaign-services section">
-    <div class="section-heading"><h2>Build the fall visit around the property.</h2></div>
+    <div class="section-heading"><h2>Choose the fall work.</h2></div>
     <div class="campaign-service-list">
       {campaign.services.map((item) => <a href={item.href}><strong>{item.label}</strong><span>{item.copy}</span><b aria-hidden="true">→</b></a>)}
     </div>
   </section>
 
   <section class="campaign-callout section section--ink">
-    <h2>Leaves drop fast. Temperatures follow.</h2>
-    <p>Book while the weather still gives the crew room to work.</p>
-    <a class="button button--light" href={estimateLink(`${campaign.slug}-mid`)} data-track="estimate_click" data-location={`${campaign.slug}-mid`}>Get on the fall route</a>
+    <h2>Book before freezing weather.</h2>
+    <p>Fall service depends on weather and crew availability.</p>
+    <a class="button button--light" href={estimateLink(`${campaign.slug}-mid`)} data-track="estimate_click" data-location={`${campaign.slug}-mid`}>Request a fall estimate</a>
   </section>
 
   <EstimateBand source={`${campaign.slug}-close`} heading={campaign.closeHeading} />
