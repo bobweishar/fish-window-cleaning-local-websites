@@ -15,7 +15,7 @@ interface Props {
 
 const { label, destination } = Astro.props;
 const gtmId = import.meta.env.PUBLIC_GTM_ID;
-const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+const ga4Id = import.meta.env.PUBLIC_GA4_ID || 'G-P57R8XEBFL';
 const useDirectGa4 = !gtmId && Boolean(ga4Id);
 ---
 

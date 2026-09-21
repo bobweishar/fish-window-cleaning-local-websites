@@ -22,7 +22,7 @@ npm audit --omit=dev --audit-level=high
 Copy `.env.example` to the deployment environment and set:
 
 - `PUBLIC_SITE_URL` to the final production origin. This controls canonical URLs, structured data, the sitemap, and social preview URLs.
-- `PUBLIC_GTM_ID` to the Google Tag Manager container ID, or `PUBLIC_GA4_ID` to a direct GA4 Measurement ID. If both are present, GTM takes precedence to prevent duplicate measurement. Analytics are omitted when neither is set.
+- Production defaults to the Chicagoland Window Cleaning GA4 property (`G-P57R8XEBFL`). Set `PUBLIC_GTM_ID` to use a Google Tag Manager container instead, or `PUBLIC_GA4_ID` to override the direct GA4 Measurement ID. If both are present, GTM takes precedence to prevent duplicate measurement.
 
 Estimate CTAs first visit a local `/go/estimate/` route, which records the handoff and redirects to the official local FISH franchise estimate form. Landing-page UTMs and ad click IDs are retained for the browser session and passed to that handoff. Phone CTAs call `(630) 757-3474`.
 
