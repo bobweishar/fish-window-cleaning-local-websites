@@ -186,7 +186,6 @@ export const areas: AreaPage[] = [
       { question: 'Can you work with divided panes or older windows?', answer: 'Point out the window type during the estimate so the team can review construction, condition, and access.' },
       { question: 'Can I combine windows and gutters?', answer: 'Yes. Ask for both in the estimate so the team can review the combined scope.' },
       { question: 'Do you clean downtown storefronts?', answer: 'Yes. Share the address, operating hours, and preferred frequency.' },
-      { question: 'Do you only serve Hinsdale?', answer: 'No. The territory also includes Oak Brook, Burr Ridge, Clarendon Hills, Downers Grove, La Grange, and additional western and southern suburbs.' },
     ],
   },
   {
