@@ -131,8 +131,7 @@ nav a:hover::after { right: 0; }
 
 .hero { min-height: 690px; display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(460px, .96fr); background: var(--mist); }
 .hero-copy { padding: clamp(76px, 9vw, 138px) clamp(24px, 6vw, 104px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
-.location-line { color: var(--charcoal); font-weight: 700; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin: -6px 0 22px; display: flex; align-items: center; gap: 12px; }
-.location-line::before { content: ''; width: 42px; height: 3px; background: var(--red); }
+.location-line { color: var(--charcoal); font-weight: 600; font-size: .95rem; letter-spacing: 0; margin: 0 0 22px; }
 .hero-lede { max-width: 40ch; font-size: clamp(1.15rem, 1.55vw, 1.45rem); line-height: 1.48; margin-bottom: 30px; }
 .hero-photo { margin: 0; position: relative; min-height: 690px; overflow: hidden; background: var(--warm); }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 54% center; }
