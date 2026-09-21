@@ -403,6 +403,10 @@ nav a:hover::after { right: 0; }
 .team-hero { min-height: 700px; display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); background: var(--mist); }
 .team-hero-copy { padding: clamp(78px, 9vw, 138px) clamp(24px, 6vw, 96px); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .team-hero-copy h1 { max-width: 10ch; }
+.team-hero-title span { display: block; }
+.team-hero-title em { color: var(--red); font-style: normal; }
+.team-hero-title span:last-child { position: relative; margin-top: .12em; padding-top: .16em; }
+.team-hero-title span:last-child::before { content: ''; position: absolute; top: 0; left: 0; width: 1.15em; height: 4px; background: var(--red); transform-origin: left; animation: team-route-line .8s .25s var(--ease) both; }
 .team-hero-lede { max-width: 42ch; margin-bottom: 30px; font-size: clamp(1.12rem, 1.45vw, 1.35rem); }
 .team-hero-gallery { min-height: 700px; display: grid; grid-template-columns: minmax(300px, 1.12fr) minmax(260px, .88fr); grid-template-rows: 1fr 1fr; gap: 12px; padding: 12px 12px 12px 0; background: var(--ink); }
 .team-hero-gallery figure { position: relative; margin: 0; overflow: hidden; background: #2a2c2d; }
@@ -412,6 +416,11 @@ nav a:hover::after { right: 0; }
 .team-group-photo img { object-fit: contain; background: #222526; }
 .team-hero-gallery figcaption { position: absolute; left: 14px; bottom: 14px; padding: 9px 11px; background: rgba(20,22,23,.9); color: white; font-size: 11px; letter-spacing: .04em; }
 .team-group-photo figcaption { left: 50%; bottom: 10px; width: max-content; max-width: calc(100% - 20px); transform: translateX(-50%); }
+
+@keyframes team-route-line {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
 
 .team-intro { display: grid; grid-template-columns: .86fr 1.14fr; gap: clamp(58px, 10vw, 138px); align-items: start; }
 .team-intro-heading { position: sticky; top: 40px; }
@@ -466,6 +475,7 @@ nav a:hover::after { right: 0; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }
   .hero-photo::before { display: none; }
+  .team-hero-title span:last-child::before { animation: none; }
   .compare-dirty, .compare-divider { animation: none; }
   .compare-handle { transition: background .16s; }
   .hero-compare:hover .compare-handle, .hero-compare:focus-within .compare-handle { transform: translate(-50%, -50%); }

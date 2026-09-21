@@ -6,57 +6,58 @@ import { estimateLink, site } from '../data/site';
 const teamSchema = {
   '@type': 'AboutPage',
   '@id': new URL('/team/#about', Astro.site).href,
-  name: 'Meet the local FISH Window Cleaning team',
-  description: 'The owner, crew, and community story behind the locally operated FISH Window Cleaning team serving Hinsdale.',
+  name: 'About the local FISH Window Cleaning crew',
+  description: 'Meet the owner and local crew behind FISH Window Cleaning in Hinsdale, Illinois.',
   mainEntity: { '@id': new URL('/hinsdale/#local-business', Astro.site).href },
 };
 ---
 
 <BaseLayout
-  title="Meet the Local Team | FISH Window Cleaning Hinsdale"
-  description="Meet the local FISH Window Cleaning owner and crew serving Hinsdale, and learn how this locally operated franchise gives back."
+  title="About Da Local Crew | FISH Window Cleaning Hinsdale"
+  description="Meet Dave and the local FISH Window Cleaning crew serving Hinsdale homes, storefronts, gutters, and more."
   image="/images/jobs/3800.jpg"
   additionalSchema={teamSchema}
 >
   <section class="team-hero">
     <div class="team-hero-copy">
-      <h1>Meet the crew that does the work.</h1>
-      <p class="team-hero-lede">The same local business answers the phone, estimates the job, and cleans the glass.</p>
+      <h1 class="team-hero-title"><span><em>Da</em> windows.</span><span><em>Da</em> gutters.</span><span><em>Da</em> local crew.</span></h1>
+      <p class="team-hero-lede">Chicago-area people who answer the phone, show up in the red vans, and do the work.</p>
       <div class="button-row">
-        <a class="button" href={estimateLink('team-hero')} data-track="estimate_click" data-location="team-hero">Request a free estimate</a>
-        <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location="team-hero">Call the local team</a>
+        <a class="button" href={estimateLink('team-hero')} data-track="estimate_click" data-location="team-hero">Get a free estimate</a>
+        <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location="team-hero">Call da crew</a>
       </div>
     </div>
     <div class="team-hero-gallery" aria-label="Photos of the local FISH Window Cleaning crew">
       <figure class="team-action-photo">
         <img src="/images/jobs/4280.webp" width="512" height="720" alt="Local FISH technician cleaning windows at a Chicago-area commercial property" fetchpriority="high" decoding="async" />
-        <figcaption>On the route</figcaption>
+        <figcaption>Da route</figcaption>
       </figure>
       <figure class="team-group-photo team-group-photo--top">
         <img src="/images/jobs/3800.webp" width="310" height="236" alt="Members of the local FISH Window Cleaning team together in red uniforms" decoding="async" />
-        <figcaption>The crew</figcaption>
+        <figcaption>Da crew</figcaption>
       </figure>
       <figure class="team-group-photo team-group-photo--bottom">
         <img src="/images/jobs/3962.webp" width="310" height="210" alt="The local FISH Window Cleaning crew gathered outside" decoding="async" />
-        <figcaption>At the shop</figcaption>
+        <figcaption>Da shop</figcaption>
       </figure>
     </div>
   </section>
 
   <section class="team-intro section">
     <div class="team-intro-heading" data-reveal>
-      <h2>Dave started this local FISH business in early 2025.</h2>
+      <h2>Dave started it. The crew makes it shine.</h2>
     </div>
     <div class="team-intro-copy" data-reveal>
-      <p class="story-lede">Today the team handles homes, downtown storefronts, offices, recurring routes, and seasonal exterior work.</p>
+      <p class="story-lede">This local FISH business opened in early 2025. Today, the team cleans homes, storefronts, offices, gutters, and exterior surfaces across the western suburbs.</p>
+      <p>No mystery call center. Just a local team that picks up, shows up, and owns the job.</p>
     </div>
   </section>
 
   <section class="community-story section section--ink">
     <div class="community-story-copy" data-reveal>
-      <h2>Why the team gives back.</h2>
+      <h2>Local means showing up for more than the job.</h2>
       <p>For Breast Cancer Awareness Month, Dave and the team donated a full-house window cleaning to a local survivor through the Andrew Weishar Foundation. Breast cancer has affected members of the leadership team and their families.</p>
-      <p>The franchise supports the foundation’s pay-it-forward mission and the Chicago families it serves.</p>
+      <p>The team supports the foundation’s pay-it-forward mission and the Chicago families it serves.</p>
       <div class="community-links">
         <a class="button button--light" href="https://www.weish4ever.org/" target="_blank" rel="noopener noreferrer">Visit Weish4Ever <span aria-hidden="true">↗</span></a>
         <a class="text-link text-link--light" href={`${site.officialPage}about/giving-back`}>Read the FISH giving-back story <span aria-hidden="true">→</span></a>
@@ -74,16 +75,16 @@ const teamSchema = {
       <div><strong>Dave Weishar</strong><span>Local owner</span></div>
     </div>
     <div class="leader-copy" data-reveal>
-      <h2>One owner to call. One team responsible.</h2>
-      <p>Dave leads the franchise with business partners and an operations team. Your estimate and service stay with the same local business.</p>
-      <p>The crew arrives in FISH uniforms and follows the franchise’s service standards.</p>
-      <a class="text-link" href={site.phoneHref} data-track="phone_click" data-location="team-owner">Call {site.phoneDisplay} <span aria-hidden="true">→</span></a>
+      <h2>Meet the guy behind the red vans.</h2>
+      <p>Dave leads the business with local partners and an operations team. Your estimate and service stay with the same local company from the first call through the finished job.</p>
+      <p>The crew arrives in FISH uniforms, follows franchise service standards, and treats the place like somebody has to live or work there—because somebody does.</p>
+      <a class="text-link" href={site.phoneHref} data-track="phone_click" data-location="team-owner">Give the crew a call at {site.phoneDisplay} <span aria-hidden="true">→</span></a>
     </div>
   </section>
 
   <section class="crew-work section" aria-labelledby="crew-work-heading">
     <div class="section-heading" data-reveal>
-      <h2 id="crew-work-heading">See the crew at work.</h2>
+      <h2 id="crew-work-heading">Ladders up. Squeegees out.</h2>
     </div>
     <div class="crew-work-grid">
       <figure class="crew-work-grid__home" data-reveal>
@@ -107,14 +108,14 @@ const teamSchema = {
 
   <section class="team-standards section">
     <div class="team-standards-intro" data-reveal>
-      <h2>Recognizable at the door. Accountable after the job.</h2>
+      <h2>Da crew code.</h2>
     </div>
     <ol class="team-standards-list">
-      <li data-reveal><span>01</span><div><h3>Easy to recognize</h3><p>Uniforms and branded vehicles make it clear who has arrived.</p></div></li>
-      <li data-reveal><span>02</span><div><h3>Careful inside</h3><p>Shoe covers, protective pads, and cleanup practices help protect your home.</p></div></li>
-      <li data-reveal><span>03</span><div><h3>Accountable after the job</h3><p>Residential visits and commercial routes stay with the same local business.</p></div></li>
+      <li data-reveal><span>01</span><div><h3>Show up sharp</h3><p>Uniforms and branded vehicles make it clear who is at the door.</p></div></li>
+      <li data-reveal><span>02</span><div><h3>Treat the place right</h3><p>Shoe covers, protective pads, and careful cleanup help protect the property.</p></div></li>
+      <li data-reveal><span>03</span><div><h3>Stand behind the shine</h3><p>Residential visits and commercial routes stay with the same local business.</p></div></li>
     </ol>
   </section>
 
-  <EstimateBand source="team-close" heading="Request an estimate from the local team." />
+  <EstimateBand source="team-close" heading="Put da local crew on it." />
 </BaseLayout>
