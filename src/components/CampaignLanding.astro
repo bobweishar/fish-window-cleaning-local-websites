@@ -8,9 +8,9 @@ interface Props { campaign: CampaignPage }
 const { campaign } = Astro.props;
 ---
 
-<BaseLayout title={campaign.title} description={campaign.description} image={campaign.image}>
+<BaseLayout title={campaign.title} description={campaign.description} image={campaign.image} noindex={true}>
   <section class="campaign-hero">
-    <figure><img src={campaign.image} alt={campaign.imageAlt} /></figure>
+    <figure><img src={campaign.image} alt={campaign.imageAlt} fetchpriority="high" decoding="async" /></figure>
     <div>
       <h1>{campaign.headline}</h1>
       <p>{campaign.copy}</p>

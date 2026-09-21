@@ -1,12 +1,11 @@
 import type { APIRoute } from 'astro';
 import { googleProfile, site } from '../data/site';
-import { campaigns, services } from '../data/content';
+import { services } from '../data/content';
 
 export const GET: APIRoute = ({ site: origin }) => {
   const base = origin ?? new URL('http://localhost:4321');
   const page = (path: string) => new URL(path, base).href;
   const servicePages = services.map((service) => `- [${service.name} in Hinsdale](${page(`/hinsdale/${service.slug}/`)}) — ${service.description}`).join('\n');
-  const campaignPages = campaigns.map((campaign) => `- [${campaign.title.split(' | ')[0]}](${page(`/campaigns/${campaign.slug}/`)}) — ${campaign.description}`).join('\n');
 
   return new Response(`# FISH Window Cleaning — Hinsdale
 
@@ -36,9 +35,6 @@ export const GET: APIRoute = ({ site: origin }) => {
 
 ## Service pages
 ${servicePages}
-
-## Seasonal campaigns
-${campaignPages}
 
 ## Content boundaries
 - This is an informational local marketing site, not the franchise booking system.

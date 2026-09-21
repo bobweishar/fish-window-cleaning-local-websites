@@ -1,20 +1,20 @@
 @font-face {
   font-family: 'Fish Display';
-  src: url('/fonts/Sora-SemiBold.ttf') format('truetype');
+  src: url('/fonts/Sora-SemiBold.woff2') format('woff2');
   font-display: swap;
   font-weight: 600 800;
 }
 
 @font-face {
   font-family: 'Fish Body';
-  src: url('/fonts/DMSans-Regular.ttf') format('truetype');
+  src: url('/fonts/DMSans-Regular.woff2') format('woff2');
   font-display: swap;
   font-weight: 400 700;
 }
 
 @font-face {
   font-family: 'Fish Condensed';
-  src: url('/fonts/BarlowCondensed-Bold.ttf') format('truetype');
+  src: url('/fonts/BarlowCondensed-Bold.woff2') format('woff2');
   font-display: swap;
   font-weight: 700;
 }
@@ -141,7 +141,7 @@ nav a:hover::after { right: 0; }
 
 .hero-compare { --split: 48%; isolation: isolate; }
 .hero-compare > .compare-clean { position: absolute; inset: 0; }
-.compare-dirty { position: absolute; z-index: 1; inset: 0; overflow: hidden; clip-path: inset(0 calc(100% - var(--split)) 0 0); animation: compare-wipe 1.05s .18s var(--ease) both; }
+.compare-dirty { position: absolute; z-index: 1; inset: 0; overflow: hidden; clip-path: inset(0 calc(100% - var(--split)) 0 0); }
 .compare-dirty img { position: absolute; inset: 0; filter: saturate(.54) contrast(.72) brightness(.68) sepia(.2) blur(1.6px); transform: scale(1.01); }
 .compare-dirty::after { content: ''; position: absolute; inset: 0; background:
   radial-gradient(ellipse 24% 8% at 18% 24%, rgba(228,220,202,.34), transparent 72%),
@@ -153,7 +153,7 @@ nav a:hover::after { right: 0; }
   background-size: auto, auto, 31px 29px, 43px 41px, auto, auto;
   mix-blend-mode: screen;
 }
-.compare-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--split); width: 2px; background: rgba(255,255,255,.95); box-shadow: 0 0 0 1px rgba(20,22,23,.18), 0 10px 30px rgba(20,22,23,.22); transform: translateX(-1px); pointer-events: none; animation: compare-divider-intro 1.05s .18s var(--ease) both; }
+.compare-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--split); width: 2px; background: rgba(255,255,255,.95); box-shadow: 0 0 0 1px rgba(20,22,23,.18), 0 10px 30px rgba(20,22,23,.22); transform: translateX(-1px); pointer-events: none; }
 .compare-handle { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--red); box-shadow: 0 12px 28px rgba(20,22,23,.24); transform: translate(-50%, -50%); transition: transform .16s var(--ease), background .16s; }
 .compare-handle svg { width: 30px; height: 20px; fill: none; stroke: white; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 .compare-control { position: absolute; z-index: 5; inset: 0; cursor: ew-resize; }
@@ -169,6 +169,10 @@ nav a:hover::after { right: 0; }
 .hero-compare.is-interacting .compare-dirty, .hero-compare.is-interacting .compare-divider { animation: none; }
 @keyframes compare-wipe { from { clip-path: inset(0 18% 0 0); } to { clip-path: inset(0 calc(100% - var(--split)) 0 0); } }
 @keyframes compare-divider-intro { from { left: 82%; } to { left: var(--split); } }
+@media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+  .compare-dirty { animation: compare-wipe 1.05s .18s var(--ease) both; }
+  .compare-divider { animation: compare-divider-intro 1.05s .18s var(--ease) both; }
+}
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
@@ -252,7 +256,7 @@ nav a:hover::after { right: 0; }
 
 .estimate-band { margin: 0; padding: clamp(68px, 8vw, 108px) max(24px, calc((100vw - 1180px) / 2)); display: flex; justify-content: space-between; align-items: end; gap: 50px; background: var(--red); color: white; }
 .estimate-band h2 { max-width: 12ch; margin-bottom: 14px; }
-.estimate-band p { color: rgba(255,255,255,.8); max-width: 56ch; margin: 0; }
+.estimate-band p { color: white; max-width: 56ch; margin: 0; }
 
 .site-footer { background: var(--ink); color: white; padding: 70px max(24px, calc((100vw - 1180px) / 2)) 28px; }
 .footer-main { display: grid; grid-template-columns: 1.4fr .8fr .8fr; gap: 56px; padding-bottom: 60px; }

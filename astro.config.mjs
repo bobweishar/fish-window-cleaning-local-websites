@@ -8,7 +8,11 @@ export default defineConfig({
   output: 'static',
   integrations: [sitemap({ filter: (page) => {
     const path = new URL(page).pathname;
-    return !path.startsWith('/go/') && !path.startsWith('/services/') && !path.startsWith('/service-areas/');
+    return path !== '/'
+      && !path.startsWith('/campaigns/')
+      && !path.startsWith('/go/')
+      && !path.startsWith('/services/')
+      && !path.startsWith('/service-areas/');
   } })],
   build: { format: 'directory' },
 });

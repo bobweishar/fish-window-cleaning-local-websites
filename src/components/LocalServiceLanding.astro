@@ -33,7 +33,7 @@ const source = `${page.areaSlug}-${page.serviceSlug}`;
         <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location={`${source}-hero`}>Call {site.phoneDisplay}</a>
       </div>
     </div>
-    <figure><img src={page.image} alt={page.imageAlt} /></figure>
+    <figure><img src={page.image} alt={page.imageAlt} fetchpriority="high" decoding="async" /></figure>
   </section>
 
   <section class="local-reasons section">

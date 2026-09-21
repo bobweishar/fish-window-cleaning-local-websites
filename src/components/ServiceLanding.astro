@@ -5,8 +5,8 @@ import CustomerLogoStrip from './CustomerLogoStrip.astro';
 import { estimateLink, site } from '../data/site';
 import { type ServicePage } from '../data/content';
 
-interface Props { service: ServicePage }
-const { service } = Astro.props;
+interface Props { service: ServicePage; noindex?: boolean }
+const { service, noindex = false } = Astro.props;
 const source = service.slug.replaceAll('-', '_');
 const isCommercial = service.slug === 'commercial-window-cleaning';
 const title = `${service.name} in Hinsdale, IL | Local FISH Team`;
@@ -17,6 +17,7 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
   title={title}
   description={description}
   canonicalPath={`/hinsdale/${service.slug}/`}
+  noindex={noindex}
   image={service.heroImage}
   additionalSchema={{
     '@type': 'Service',
@@ -35,7 +36,7 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
       </div>
     </div>
     <figure class:list={['service-hero-photo', { 'service-hero-photo--contain': service.heroFit === 'contain' }]}>
-      <img src={service.heroImage} alt={service.heroAlt} />
+      <img src={service.heroImage} alt={service.heroAlt} fetchpriority="high" decoding="async" />
     </figure>
   </section>
 
@@ -50,7 +51,7 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
 
   <section class="care-section section section--mist">
     <div class:list={['care-media', { 'care-media--contain': service.heroFit === 'contain' }]}>
-      <img src={service.featureImage} alt={service.featureAlt} loading="lazy" />
+      <img src={service.featureImage} alt={service.featureAlt} loading="lazy" decoding="async" />
     </div>
     <div>
       <h2>{service.featureHeading}</h2>
@@ -61,7 +62,7 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
 
   <section class="local-condition section">
     <div><h2>{service.localHeading}</h2><p>{service.localCopy}</p></div>
-    <figure><img src={service.localImage} alt={service.localAlt} loading="lazy" /></figure>
+    <figure><img src={service.localImage} alt={service.localAlt} loading="lazy" decoding="async" /></figure>
   </section>
 
   <section class="faq-section section">
