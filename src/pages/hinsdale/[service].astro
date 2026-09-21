@@ -1,0 +1,13 @@
+---
+import ServiceLanding from '../../components/ServiceLanding.astro';
+import { services, type ServicePage } from '../../data/content';
+
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { service: service.slug }, props: { service } }));
+}
+
+interface Props { service: ServicePage }
+const { service } = Astro.props;
+---
+
+<ServiceLanding service={service} />

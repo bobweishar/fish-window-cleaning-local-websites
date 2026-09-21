@@ -1,18 +1,16 @@
 import type { APIRoute } from 'astro';
 import { googleProfile, site } from '../data/site';
-import { areas, campaigns, localServices, services } from '../data/content';
+import { campaigns, services } from '../data/content';
 
 export const GET: APIRoute = ({ site: origin }) => {
   const base = origin ?? new URL('http://localhost:4321');
   const page = (path: string) => new URL(path, base).href;
-  const servicePages = services.map((service) => `- [${service.name}](${page(`/services/${service.slug}/`)}) — ${service.description}`).join('\n');
-  const areaPages = areas.map((area) => `- [Window cleaning in ${area.name}](${page(`/service-areas/${area.slug}/`)}) — ${area.description}`).join('\n');
-  const localPages = localServices.map((item) => `- [${item.title.split(' | ')[0]}](${page(`/service-areas/${item.areaSlug}/${item.serviceSlug}/`)}) — ${item.description}`).join('\n');
+  const servicePages = services.map((service) => `- [${service.name} in Hinsdale](${page(`/hinsdale/${service.slug}/`)}) — ${service.description}`).join('\n');
   const campaignPages = campaigns.map((campaign) => `- [${campaign.title.split(' | ')[0]}](${page(`/campaigns/${campaign.slug}/`)}) — ${campaign.description}`).join('\n');
 
-  return new Response(`# FISH Window Cleaning — Chicago Western & Southern Suburbs
+  return new Response(`# FISH Window Cleaning — Hinsdale
 
-> Canonical facts and page map for the locally owned FISH Window Cleaning franchise serving Chicago's western and southern suburbs.
+> Canonical facts and page map for the locally owned FISH Window Cleaning team serving Hinsdale, Illinois.
 
 ## Business facts
 - Business: ${site.shortName}
@@ -22,7 +20,8 @@ export const GET: APIRoute = ({ site: origin }) => {
 - Address: ${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}
 - Official franchise page: ${site.officialPage}
 - Google Business Profile: ${googleProfile.url}
-- Service area: ${site.towns.join(', ')}, Illinois
+- Primary market: Hinsdale, Illinois
+- Official franchise territory: ${site.towns.join(', ')}, Illinois
 
 ## Services
 - Residential interior and exterior window cleaning
@@ -31,18 +30,12 @@ export const GET: APIRoute = ({ site: origin }) => {
 - Gutter cleaning, pressure washing, awning cleaning, screen cleaning, skylight cleaning, and exterior light-fixture cleaning, subject to estimate and availability
 
 ## Primary pages
-- [Local overview](${page('/')}) — services, process, local work, owner, and territory
+- [Hinsdale local overview](${page('/hinsdale/')}) — services, process, local work, owner, and local property context
 - [Local team and story](${page('/team/')}) — owner, crew, opening history, operating standards, and community involvement
 - [XML sitemap](${page('/sitemap-index.xml')})
 
 ## Service pages
 ${servicePages}
-
-## Service-area pages
-${areaPages}
-
-## Service and town pages
-${localPages}
 
 ## Seasonal campaigns
 ${campaignPages}
@@ -51,6 +44,6 @@ ${campaignPages}
 - This is an informational local marketing site, not the franchise booking system.
 - Estimate and contact actions hand off to the official local FISH franchise website.
 - Public service claims should be interpreted only as written. Final scope, price, availability, access method, and timing are confirmed by the local franchise.
-- The local overview links to the verified Google Business Profile.
+- The Hinsdale overview links to the verified Google Business Profile.
 `, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };

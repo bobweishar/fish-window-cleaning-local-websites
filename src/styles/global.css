@@ -143,8 +143,17 @@ nav a:hover::after { right: 0; }
 .hero-compare { --split: 48%; isolation: isolate; }
 .hero-compare > .compare-clean { position: absolute; inset: 0; }
 .compare-dirty { position: absolute; z-index: 1; inset: 0; overflow: hidden; clip-path: inset(0 calc(100% - var(--split)) 0 0); animation: compare-wipe 1.05s .18s var(--ease) both; }
-.compare-dirty img { position: absolute; inset: 0; filter: saturate(.64) contrast(.82) brightness(.76) sepia(.16) blur(1.2px); transform: scale(1.008); }
-.compare-dirty::after { content: ''; position: absolute; inset: 0; background: rgba(117, 101, 77, .19); mix-blend-mode: multiply; }
+.compare-dirty img { position: absolute; inset: 0; filter: saturate(.54) contrast(.72) brightness(.68) sepia(.2) blur(1.6px); transform: scale(1.01); }
+.compare-dirty::after { content: ''; position: absolute; inset: 0; background:
+  radial-gradient(ellipse 24% 8% at 18% 24%, rgba(228,220,202,.34), transparent 72%),
+  radial-gradient(ellipse 9% 20% at 68% 58%, rgba(232,226,211,.28), transparent 74%),
+  radial-gradient(circle at 32% 72%, rgba(238,232,218,.33) 0 1.5px, transparent 2.5px),
+  radial-gradient(circle at 74% 30%, rgba(238,232,218,.28) 0 1px, transparent 2px),
+  linear-gradient(104deg, transparent 30%, rgba(235,228,211,.18) 38%, transparent 47%),
+  rgba(117,101,77,.22);
+  background-size: auto, auto, 31px 29px, 43px 41px, auto, auto;
+  mix-blend-mode: screen;
+}
 .compare-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--split); width: 2px; background: rgba(255,255,255,.95); box-shadow: 0 0 0 1px rgba(20,22,23,.18), 0 10px 30px rgba(20,22,23,.22); transform: translateX(-1px); pointer-events: none; animation: compare-divider-intro 1.05s .18s var(--ease) both; }
 .compare-handle { position: absolute; top: 50%; left: 50%; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--red); box-shadow: 0 12px 28px rgba(20,22,23,.24); transform: translate(-50%, -50%); transition: transform .16s var(--ease), background .16s; }
 .compare-handle svg { width: 30px; height: 20px; fill: none; stroke: white; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -152,10 +161,12 @@ nav a:hover::after { right: 0; }
 .compare-control input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
 .hero-compare:hover .compare-handle, .hero-compare:focus-within .compare-handle { transform: translate(-50%, -50%) scale(1.08); background: var(--red-dark); }
 .hero-compare:focus-within .compare-handle { outline: 3px solid white; outline-offset: 4px; }
-.compare-label, .compare-instruction { position: absolute; z-index: 3; top: 22px; margin: 0; color: white; font-family: var(--display); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(20,22,23,.7); pointer-events: none; }
-.compare-label--dirty { left: 22px; }
-.compare-label--clean { right: 22px; }
-.compare-instruction { top: auto; right: 22px; bottom: 78px; padding: 9px 11px; background: rgba(20,22,23,.86); letter-spacing: .04em; text-transform: none; }
+.compare-label { position: absolute; z-index: 3; top: 22px; display: grid; gap: 1px; min-width: 84px; padding: 10px 12px 9px; font-family: var(--display); line-height: 1; text-transform: uppercase; pointer-events: none; box-shadow: 0 8px 24px rgba(20,22,23,.2); }
+.compare-label b { font-size: 17px; letter-spacing: -.01em; }
+.compare-label small { font-family: var(--body); font-size: 9px; font-weight: 700; letter-spacing: .16em; }
+.compare-label--dirty { left: 22px; color: white; background: rgba(20,22,23,.9); }
+.compare-label--clean { right: 22px; color: var(--ink); background: rgba(255,255,255,.94); text-align: right; }
+.compare-instruction { position: absolute; z-index: 4; left: 50%; bottom: 26px; margin: 0; padding: 9px 12px; color: white; background: rgba(20,22,23,.9); font-family: var(--body); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; transform: translateX(-50%); pointer-events: none; white-space: nowrap; }
 .hero-compare.is-interacting .compare-dirty, .hero-compare.is-interacting .compare-divider { animation: none; }
 @keyframes compare-wipe { from { clip-path: inset(0 18% 0 0); } to { clip-path: inset(0 calc(100% - var(--split)) 0 0); } }
 @keyframes compare-divider-intro { from { left: 82%; } to { left: var(--split); } }

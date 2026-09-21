@@ -13,6 +13,8 @@ const primaryServices = services.filter((service) => ['residential-window-cleani
   title={area.title}
   description={area.description}
   image="/images/jobs/4305.jpg"
+  noindex={true}
+  canonicalPath={area.slug === 'hinsdale-il' ? '/hinsdale/' : undefined}
   additionalSchema={{
     '@type': 'Service',
     name: `Window cleaning in ${area.name}, Illinois`,

@@ -9,17 +9,20 @@ interface Props {
   description: string;
   image?: string;
   noindex?: boolean;
+  canonicalPath?: string;
   additionalSchema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, image = '/images/jobs/4305.jpg', noindex = false, additionalSchema = [] } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const { title, description, image = '/images/jobs/4305.jpg', noindex = false, canonicalPath, additionalSchema = [] } = Astro.props;
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, Astro.site);
 const imageUrl = new URL(image, Astro.site);
-const homeUrl = new URL('/', Astro.site);
+const homeUrl = new URL('/hinsdale/', Astro.site);
 const businessId = new URL('/#local-business', Astro.site).href;
 const websiteId = new URL('/#website', Astro.site).href;
 const pageId = `${canonical.href}#webpage`;
 const gtmId = import.meta.env.PUBLIC_GTM_ID;
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+const useDirectGa4 = !gtmId && Boolean(ga4Id);
 const extraSchemaNodes = Array.isArray(additionalSchema) ? additionalSchema : [additionalSchema];
 const schema = {
   '@context': 'https://schema.org',
@@ -29,7 +32,7 @@ const schema = {
       '@id': businessId,
       name: site.name,
       alternateName: site.shortName,
-      description: 'Locally owned FISH Window Cleaning franchise serving Chicago’s western and southern suburbs.',
+      description: 'Locally owned FISH Window Cleaning team serving Hinsdale homes and businesses.',
       image: imageUrl.href,
       logo: new URL('/images/brand/fish-logo.jpg', Astro.site).href,
       telephone: '+1-630-757-3474',
@@ -115,6 +118,17 @@ const schema = {
         firstScript.parentNode.insertBefore(tag, firstScript);
       </script>
     )}
+    {useDirectGa4 && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline define:vars={{ ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', ga4Id, { send_page_view: false });
+        </script>
+      </>
+    )}
   </head>
   <body>
     {gtmId && (
@@ -128,32 +142,139 @@ const schema = {
       <a href={site.phoneHref} data-track="phone_click" data-location="mobile-bar">Call now</a>
       <a href={estimateLink('mobile-bar')} data-track="estimate_click" data-location="mobile-bar">Free estimate</a>
     </div>
-    <script is:inline>
-      document.querySelectorAll('[data-track]').forEach(function (link) {
-        link.addEventListener('click', function () {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: link.dataset.track,
-            link_location: link.dataset.location || 'unknown',
+    <script is:inline define:vars={{ useDirectGa4 }}>
+      (function () {
+        var attributionKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'];
+        var attribution = {};
+        var incoming = new URLSearchParams(window.location.search);
+        var storageAvailable = true;
+
+        try {
+          attribution = JSON.parse(window.sessionStorage.getItem('fish_attribution') || '{}');
+        } catch (error) {
+          storageAvailable = false;
+          attribution = {};
+        }
+
+        attributionKeys.forEach(function (key) {
+          var value = incoming.get(key);
+          if (value) attribution[key] = value.slice(0, 200);
+        });
+
+        if (storageAvailable) {
+          try { window.sessionStorage.setItem('fish_attribution', JSON.stringify(attribution)); } catch (error) {}
+        }
+
+        var sessionId = '';
+        if (storageAvailable) {
+          try {
+            sessionId = window.sessionStorage.getItem('fish_session_id') || '';
+            if (!sessionId) {
+              sessionId = window.crypto && window.crypto.randomUUID
+                ? window.crypto.randomUUID()
+                : String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+              window.sessionStorage.setItem('fish_session_id', sessionId);
+            }
+          } catch (error) {}
+        }
+
+        function pageType(path) {
+          if (path === '/' || path === '/hinsdale/') return 'home';
+          if (path.indexOf('/hinsdale/') === 0) return 'hinsdale_microsite';
+          if (path.indexOf('/services/') === 0) return 'service';
+          if (path.indexOf('/service-areas/') === 0) return 'service_area';
+          if (path.indexOf('/campaigns/') === 0) return 'campaign';
+          if (path.indexOf('/team') === 0) return 'team';
+          return 'other';
+        }
+
+        function track(eventName, details) {
+          var payload = Object.assign({
+            event: eventName,
             page_path: window.location.pathname,
-            destination_url: link.href,
+            page_type: pageType(window.location.pathname),
+            session_id: sessionId,
+          }, attribution, details || {});
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(payload);
+
+          if (useDirectGa4 && typeof window.gtag === 'function') {
+            var gaDetails = Object.assign({}, payload);
+            delete gaDetails.event;
+            window.gtag('event', eventName === 'site_page_view' ? 'page_view' : eventName, gaDetails);
+          }
+        }
+
+        window.fishTrack = track;
+        track('site_page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+          referrer: document.referrer || undefined,
+        });
+
+        document.addEventListener('click', function (event) {
+          var link = event.target.closest && event.target.closest('a');
+          if (!link || !link.href) return;
+
+          var explicitEvent = link.dataset.track;
+          var destination = new URL(link.href, window.location.href);
+          var eventName = explicitEvent;
+
+          if (!eventName && destination.origin !== window.location.origin) eventName = 'outbound_click';
+          if (!eventName && destination.pathname.indexOf('/services/') === 0) eventName = 'service_navigation';
+          if (!eventName && destination.pathname.indexOf('/service-areas/') === 0) eventName = 'service_area_navigation';
+          if (!eventName && destination.pathname.indexOf('/campaigns/') === 0) eventName = 'campaign_navigation';
+          if (!eventName) return;
+
+          track(eventName, {
+            link_location: link.dataset.location || 'content',
+            link_text: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 120),
+            destination_url: destination.href,
           });
         });
-      });
 
-      document.querySelectorAll('[data-compare]').forEach(function (comparison) {
+        document.querySelectorAll('[data-compare]').forEach(function (comparison) {
         var range = comparison.querySelector('input[type="range"]');
         if (!range) return;
+        var hasTrackedEngagement = false;
 
         function updateComparison() {
           comparison.classList.add('is-interacting');
           comparison.style.setProperty('--split', range.value + '%');
+          if (!hasTrackedEngagement) {
+            hasTrackedEngagement = true;
+            track('comparison_engaged', { comparison_name: 'dirty_clean_hero' });
+          }
         }
 
         range.addEventListener('input', updateComparison);
         range.addEventListener('pointerdown', function () { comparison.classList.add('is-interacting'); });
         range.addEventListener('keydown', function () { comparison.classList.add('is-interacting'); });
-      });
+        });
+
+        var trackedDepths = {};
+        var ticking = false;
+        function recordScrollDepth() {
+          var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          if (scrollable <= 0) return;
+          var depth = Math.round((window.scrollY / scrollable) * 100);
+          [50, 90].forEach(function (threshold) {
+            if (depth >= threshold && !trackedDepths[threshold]) {
+              trackedDepths[threshold] = true;
+              track('scroll_depth', { percent_scrolled: threshold });
+            }
+          });
+        }
+        window.addEventListener('scroll', function () {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(function () {
+            recordScrollDepth();
+            ticking = false;
+          });
+        }, { passive: true });
+      })();
 
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {

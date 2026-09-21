@@ -3,29 +3,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import EstimateBand from './EstimateBand.astro';
 import CustomerLogoStrip from './CustomerLogoStrip.astro';
 import { estimateLink, site } from '../data/site';
-import { areas, localServices, type ServicePage } from '../data/content';
+import { type ServicePage } from '../data/content';
 
 interface Props { service: ServicePage }
 const { service } = Astro.props;
 const source = service.slug.replaceAll('-', '_');
 const isCommercial = service.slug === 'commercial-window-cleaning';
+const title = `${service.name} in Hinsdale, IL | Local FISH Team`;
+const description = `${service.name} for Hinsdale homes and businesses from a locally owned FISH Window Cleaning team.`;
 ---
 
 <BaseLayout
-  title={service.title}
-  description={service.description}
+  title={title}
+  description={description}
+  canonicalPath={`/hinsdale/${service.slug}/`}
   image={service.heroImage}
   additionalSchema={{
     '@type': 'Service',
     name: service.name,
     serviceType: service.name,
-    areaServed: site.towns.map((name) => ({ '@type': 'City', name, addressRegion: 'IL' })),
+    areaServed: { '@type': 'City', name: 'Hinsdale', addressRegion: 'IL' },
   }}
 >
   <section class:list={['service-hero', { 'service-hero--commercial': isCommercial }]}>
     <div class="service-hero-copy">
       <h1>{service.heroHeadline}</h1>
-      <p class="location-line">{service.name}</p>
+      <p class="location-line">{service.name} · Hinsdale, Illinois</p>
       <p>{service.heroCopy}</p>
       <div class="button-row">
         <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free estimate</a>
@@ -62,14 +65,11 @@ const isCommercial = service.slug === 'commercial-window-cleaning';
     <figure><img src={service.localImage} alt={service.localAlt} loading="lazy" /></figure>
   </section>
 
-  <section class="area-links-section section section--mist">
-    <h2>{service.name}, closer to home.</h2>
-    <div class="area-link-list">
-      {areas.map((area) => {
-        const localPage = localServices.find((item) => item.areaSlug === area.slug && item.serviceSlug === service.slug);
-        const href = localPage ? `/service-areas/${area.slug}/${service.slug}/` : `/service-areas/${area.slug}/`;
-        return <a href={href}><strong>{area.name}</strong><span>{localPage ? `${service.name} in ${area.name}` : 'Local service details'}</span><b aria-hidden="true">→</b></a>;
-      })}
+  <section class="local-service-proof section section--ink">
+    <div><h2>One Hinsdale-focused team from estimate to clean.</h2><p>Local phone number, uniformed crew, and the same franchise responsible for the finished work.</p></div>
+    <div class="local-service-proof__links">
+      <a href="/hinsdale/">More Hinsdale services <span aria-hidden="true">→</span></a>
+      <a href="/team/">Meet the local team <span aria-hidden="true">→</span></a>
     </div>
   </section>
 

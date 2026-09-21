@@ -1,5 +1,5 @@
 export const site = {
-  name: 'FISH Window Cleaning — Chicago Western & Southern Suburbs',
+  name: 'FISH Window Cleaning — Hinsdale',
   shortName: 'FISH Window Cleaning',
   owner: 'Dave Weishar',
   phoneDisplay: '(630) 757-3474',

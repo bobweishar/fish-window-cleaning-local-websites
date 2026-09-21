@@ -1,6 +1,6 @@
 # Local FISH Window Cleaning Site
 
-Astro marketing site for the locally owned FISH Window Cleaning franchise serving Chicago's western and southern suburbs.
+Astro marketing site for the Hinsdale-focused microsite of a locally owned FISH Window Cleaning franchise.
 
 ## Local development
 
@@ -22,9 +22,20 @@ npm audit --omit=dev --audit-level=high
 Copy `.env.example` to the deployment environment and set:
 
 - `PUBLIC_SITE_URL` to the final production origin. This controls canonical URLs, structured data, the sitemap, and social preview URLs.
-- `PUBLIC_GTM_ID` to the Google Tag Manager container ID. Analytics are omitted when it is unset.
+- `PUBLIC_GTM_ID` to the Google Tag Manager container ID, or `PUBLIC_GA4_ID` to a direct GA4 Measurement ID. If both are present, GTM takes precedence to prevent duplicate measurement. Analytics are omitted when neither is set.
 
-Estimate CTAs first visit a local `/go/estimate/` route, which records the handoff and redirects to the official local FISH franchise estimate form while preserving supported ad and UTM parameters. Phone CTAs call `(630) 757-3474`. Both emit `dataLayer` events when Tag Manager is configured.
+Estimate CTAs first visit a local `/go/estimate/` route, which records the handoff and redirects to the official local FISH franchise estimate form. Landing-page UTMs and ad click IDs are retained for the browser session and passed to that handoff. Phone CTAs call `(630) 757-3474`.
+
+The analytics layer emits:
+
+- `site_page_view` (translated to `page_view` in direct GA4 mode)
+- `estimate_click`, `phone_click`, and `form_redirect`
+- `google_reviews_click` and other external `outbound_click` events
+- `service_navigation`, `service_area_navigation`, and `campaign_navigation`
+- `comparison_engaged` for the homepage dirty/clean slider
+- `scroll_depth` at 50% and 90%
+
+Events include page type, path, link placement, destination, a session-scoped identifier, and available campaign attribution. No form fields or other personally identifying information are collected by the site code.
 
 All franchise-owned forms have local handoff routes so future links never need to point straight at a form:
 
@@ -37,21 +48,16 @@ All franchise-owned forms have local handoff routes so future links never need t
 ## Current pages
 
 - `/`
-- `/services/residential-window-cleaning/`
-- `/services/commercial-window-cleaning/`
-- `/services/gutter-cleaning/`
-- `/services/pressure-washing/`
-- `/service-areas/hinsdale-il/`
-- `/service-areas/oak-brook-il/`
-- `/service-areas/burr-ridge-il/`
-- `/service-areas/la-grange-il/`
-- `/service-areas/hinsdale-il/gutter-cleaning/`
-- `/service-areas/oak-brook-il/residential-window-cleaning/`
+- `/hinsdale/` (canonical local homepage; `/` shows the same launch experience)
+- `/hinsdale/residential-window-cleaning/`
+- `/hinsdale/commercial-window-cleaning/`
+- `/hinsdale/gutter-cleaning/`
+- `/hinsdale/pressure-washing/`
 - `/campaigns/fall-exterior-cleaning/`
 - `/team/`
 - `/llms.txt`
 - `/robots.txt`
 
-Services, areas, service-area intersections, and campaigns are published from `src/data/content.ts`. See `CONTENT_SYSTEM.md` for the routing model and page-quality rules.
+Services and campaigns are published from `src/data/content.ts`. Legacy regional routes remain available but are excluded from the sitemap and point search engines toward the canonical Hinsdale microsite. See `CONTENT_SYSTEM.md` for the routing model and page-quality rules.
 
 Current photography and the FISH mark are sourced from the official local franchise page. Replace them with higher-resolution originals when available without changing the file-level content model.

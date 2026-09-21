@@ -15,6 +15,8 @@ interface Props {
 
 const { label, destination } = Astro.props;
 const gtmId = import.meta.env.PUBLIC_GTM_ID;
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+const useDirectGa4 = !gtmId && Boolean(ga4Id);
 ---
 
 <!doctype html>
@@ -46,20 +48,34 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
         firstScript.parentNode.insertBefore(tag, firstScript);
       </script>
     )}
-    <script is:inline define:vars={{ destination, label }}>
+    {useDirectGa4 && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}></script>
+        <script is:inline define:vars={{ ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', ga4Id, { send_page_view: false });
+        </script>
+      </>
+    )}
+    <script is:inline define:vars={{ destination, label, useDirectGa4 }}>
       (function () {
         var incoming = new URLSearchParams(window.location.search);
         var target = new URL(destination);
         var allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'];
+        var stored = {};
+
+        try { stored = JSON.parse(window.sessionStorage.getItem('fish_attribution') || '{}'); } catch (error) {}
 
         allowed.forEach(function (key) {
-          var value = incoming.get(key);
+          var value = incoming.get(key) || stored[key];
           if (value) target.searchParams.set(key, value);
         });
 
         target.searchParams.set('utm_source', target.searchParams.get('utm_source') || 'local_site');
         target.searchParams.set('utm_medium', target.searchParams.get('utm_medium') || 'referral');
-        target.searchParams.set('utm_campaign', target.searchParams.get('utm_campaign') || 'western_southern_suburbs');
+        target.searchParams.set('utm_campaign', target.searchParams.get('utm_campaign') || 'hinsdale_microsite');
 
         var source = incoming.get('source');
         if (source && /^[a-z0-9-]{1,64}$/i.test(source)) {
@@ -74,13 +90,26 @@ const gtmId = import.meta.env.PUBLIC_GTM_ID;
           window.location.replace(target.href);
         };
 
-        window.dataLayer.push({
+        var payload = {
           event: 'form_redirect',
           form_type: label,
+          link_location: source || 'unknown',
+          page_path: window.location.pathname,
           destination_url: target.href,
           event_callback: redirect,
           event_timeout: 700,
-        });
+        };
+        window.dataLayer.push(payload);
+        if (useDirectGa4 && typeof window.gtag === 'function') {
+          window.gtag('event', 'form_redirect', {
+            form_type: label,
+            link_location: source || 'unknown',
+            page_path: window.location.pathname,
+            destination_url: target.href,
+            event_callback: redirect,
+            event_timeout: 700,
+          });
+        }
 
         document.addEventListener('DOMContentLoaded', function () {
           var fallback = document.getElementById('continue-link');

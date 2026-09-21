@@ -7,14 +7,14 @@ const teamSchema = {
   '@type': 'AboutPage',
   '@id': new URL('/team/#about', Astro.site).href,
   name: 'Meet the local FISH Window Cleaning team',
-  description: 'The owner, crew, and community story behind the locally operated FISH Window Cleaning franchise serving Chicago’s western and southern suburbs.',
-  mainEntity: { '@id': new URL('/#local-business', Astro.site).href },
+  description: 'The owner, crew, and community story behind the locally operated FISH Window Cleaning team serving Hinsdale.',
+  mainEntity: { '@id': new URL('/hinsdale/#local-business', Astro.site).href },
 };
 ---
 
 <BaseLayout
-  title="Meet the Local Team | FISH Window Cleaning Chicago Suburbs"
-  description="Meet the local FISH Window Cleaning owner and crew serving Chicago’s western and southern suburbs, and learn how this local franchise gives back."
+  title="Meet the Local Team | FISH Window Cleaning Hinsdale"
+  description="Meet the local FISH Window Cleaning owner and crew serving Hinsdale, and learn how this locally operated franchise gives back."
   image="/images/jobs/3800.jpg"
   additionalSchema={teamSchema}
 >
@@ -22,7 +22,7 @@ const teamSchema = {
     <div class="team-hero-copy">
       <p class="location-line">The people behind the red shirts</p>
       <h1>A local crew—not a mystery middleman.</h1>
-      <p class="team-hero-lede">The people who answer the call, walk the property, and clean the glass work right here in Chicago’s western and southern suburbs.</p>
+      <p class="team-hero-lede">The people who answer the call, walk the property, and clean the glass are part of the same local operation serving Hinsdale.</p>
       <div class="button-row">
         <a class="button" href={estimateLink('team-hero')} data-track="estimate_click" data-location="team-hero">Request a free estimate</a>
         <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location="team-hero">Call the local team</a>
@@ -47,18 +47,18 @@ const teamSchema = {
   <section class="team-intro section">
     <div class="team-intro-heading" data-reveal>
       <p class="story-marker">The local story</p>
-      <h2>A new Chicago chapter, built close to home.</h2>
+      <h2>A local Chicago chapter, built close to home.</h2>
     </div>
     <div class="team-intro-copy" data-reveal>
-      <p class="story-lede">FISH welcomed Dave Weishar as the owner of a new western and southern suburbs franchise in <a href="https://www.glassdoor.co.in/Updates/Fish-Window-Cleaning-Company-Updates-E383461_P2.htm" target="_blank" rel="noopener noreferrer">early 2025</a>.</p>
-      <p>Today, the Bridgeview-based operation serves a route stretching from Hinsdale and Oak Brook to Oak Lawn, Oak Forest, and Flossmoor. It handles residential visits, storefronts, offices, recurring routes, and seasonal exterior work through one local team.</p>
+      <p class="story-lede">FISH welcomed Dave Weishar as the owner of this local franchise in <a href="https://www.glassdoor.co.in/Updates/Fish-Window-Cleaning-Company-Updates-E383461_P2.htm" target="_blank" rel="noopener noreferrer">early 2025</a>.</p>
+      <p>Today, the operation handles Hinsdale residential visits, downtown storefronts, offices, recurring routes, and seasonal exterior work through one local team.</p>
     </div>
   </section>
 
   <section class="leader-section section section--mist">
     <div class="leader-portrait" data-reveal>
       <img src="/images/dave-weishar.jpg" width="288" height="214" alt="Dave Weishar, owner of the local FISH Window Cleaning franchise" loading="lazy" />
-      <div><strong>Dave Weishar</strong><span>Owner · Chicago western + southern suburbs</span></div>
+      <div><strong>Dave Weishar</strong><span>Local owner</span></div>
     </div>
     <div class="leader-copy" data-reveal>
       <p class="story-marker">Local ownership</p>
@@ -88,7 +88,7 @@ const teamSchema = {
       </figure>
       <figure class="crew-work-grid__wide" data-reveal>
         <img src="/images/jobs/4305.jpg" width="720" height="567" alt="Two local FISH Window Cleaning vans parked on a leafy suburban street" loading="lazy" />
-        <figcaption><strong>In the neighborhood</strong><span>Serving Chicago’s western + southern suburbs</span></figcaption>
+        <figcaption><strong>In the neighborhood</strong><span>Serving Hinsdale homes and businesses</span></figcaption>
       </figure>
     </div>
   </section>
