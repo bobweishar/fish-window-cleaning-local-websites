@@ -5,9 +5,9 @@ import CustomerLogoStrip from '../components/CustomerLogoStrip.astro';
 import { estimateLink, googleProfile, site } from '../data/site';
 
 const faqs = [
-  ['Do you clean both homes and businesses?', 'Yes. The team cleans homes, storefronts, offices, restaurants, and other commercial properties.'],
-  ['Can you work with older or divided-light windows?', 'Yes. Show us the window type during the estimate so we can confirm the right method and access.'],
-  ['Can you schedule around downtown business hours?', 'Yes. Share your hours and access needs during the estimate.'],
+  ['Do you clean homes and downtown businesses?', 'Yes. The team cleans residential windows as well as storefronts, offices, restaurants, and other commercial properties.'],
+  ['How do you handle older or divided-light windows?', 'We confirm the window type, condition, and access during the estimate, then recommend the appropriate method.'],
+  ['Can you work around business hours?', 'Yes. Share the hours and access requirements during the estimate so the local team can confirm a workable schedule.'],
 ];
 ---
 
@@ -18,8 +18,8 @@ const faqs = [
 >
   <section class="hero">
     <div class="hero-copy">
-      <h1>Window cleaning that fits a Hinsdale home.</h1>
-      <p class="hero-lede">From divided-light windows in Robbins Park to tall entries and broad panes in The Woodlands, the estimate starts with the property you actually have.</p>
+      <h1>The glass is different here.</h1>
+      <p class="hero-lede">Older divided panes. Tall entries. Downtown storefronts. This local FISH team estimates the property in front of us and cleans it carefully.</p>
       <div class="button-row">
         <a class="button" href={estimateLink('home-hero')} data-track="estimate_click" data-location="home-hero">Request a free estimate</a>
         <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location="home-hero">Call {site.phoneDisplay}</a>
@@ -49,7 +49,7 @@ const faqs = [
 
   <section class="path-section section" aria-labelledby="choose-path">
     <div class="section-heading" data-reveal>
-      <h2 id="choose-path">Homes and businesses.</h2>
+      <h2 id="choose-path">For the house. For the storefront.</h2>
     </div>
     <div class="path-grid">
       <a class="path-panel path-panel--home" href="/hinsdale/residential-window-cleaning/" data-reveal>
@@ -70,27 +70,33 @@ const faqs = [
       </a>
     </div>
     <div class="more-services" data-reveal>
-      <a href="/hinsdale/gutter-cleaning/"><strong>Gutter cleaning</strong><span>Mature trees + heavy leaf drop</span><b aria-hidden="true">→</b></a>
+      <a href="/hinsdale/gutter-cleaning/"><strong>Gutter cleaning</strong><span>After leaf drop. Before the first freeze.</span><b aria-hidden="true">→</b></a>
       <a href="/hinsdale/pressure-washing/"><strong>Pressure washing</strong><span>Approved exterior surfaces</span><b aria-hidden="true">→</b></a>
     </div>
   </section>
 
   <section id="hinsdale-properties" class="local-proof section section--mist">
-    <div class="local-proof__heading" data-reveal>
-      <h2>What changes the estimate.</h2>
-      <p>Divided panes, tall entries, tree cover, landscaping, and business hours.</p>
+    <div class="local-proof__copy" data-reveal>
+      <h2>Hinsdale homes have character.</h2>
+      <p>An older divided-light window is not a broad modern pane. Storms, screens, landscaping, and access all change the work. We confirm the method at the estimate.</p>
+      <a class="text-link" href="/hinsdale/residential-window-cleaning/">See residential window cleaning <span aria-hidden="true">→</span></a>
     </div>
     <figure class="local-proof__media" data-reveal>
       <img src="/images/local/downtown-hinsdale.jpg" width="3648" height="2118" alt="Historic storefronts and mature trees in downtown Hinsdale" loading="lazy" />
-      <figcaption>Downtown, near Washington Street · <a href="https://commons.wikimedia.org/wiki/File:Downtown_Hinsdale_Block.JPG" target="_blank" rel="noopener noreferrer" aria-label="Photo by Teemu08, licensed CC BY-SA 3.0">Photo: Teemu08 / CC</a></figcaption>
+      <figcaption>Washington Street, downtown Hinsdale · <a href="https://commons.wikimedia.org/wiki/File:Downtown_Hinsdale_Block.JPG" target="_blank" rel="noopener noreferrer" aria-label="Photo by Teemu08, licensed CC BY-SA 3.0">Photo: Teemu08 / CC</a></figcaption>
     </figure>
+    <aside class="local-proof__note" data-reveal>
+      <strong>A detail locals know.</strong>
+      <p>Hinsdale architect R. Harold Zook used spiderweb and V-shaped windows in his homes. The glass has always been part of the architecture here.</p>
+      <a href="https://www.hinsdalehistory.org/zook-home-and-studio" target="_blank" rel="noopener noreferrer">See the Zook Home &amp; Studio <span aria-hidden="true">↗</span></a>
+    </aside>
   </section>
 
   <CustomerLogoStrip />
 
   <section id="local-work" class="work-section section">
     <div class="section-heading" data-reveal>
-      <h2>Recent local work.</h2>
+      <h2>Work from the local team.</h2>
     </div>
     <div class="work-grid">
       <figure class="work-tall" data-reveal><img src="/images/jobs/4260.jpg" width="476" height="720" alt="FISH professional cleaning an exterior coach light on a brick home" loading="lazy" /><figcaption>Exterior detail care</figcaption></figure>
