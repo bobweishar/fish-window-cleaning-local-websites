@@ -1,0 +1,101 @@
+---
+import { formRedirects, site } from '../../data/site';
+
+export function getStaticPaths() {
+  return Object.entries(formRedirects).map(([form, details]) => ({
+    params: { form },
+    props: details,
+  }));
+}
+
+interface Props {
+  label: string;
+  destination: string;
+}
+
+const { label, destination } = Astro.props;
+const gtmId = import.meta.env.PUBLIC_GTM_ID;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#e51837" />
+    <meta http-equiv="refresh" content={`2;url=${destination}`} />
+    <title>Opening the official FISH {label}</title>
+    <style>
+      :root { font-family: Arial, Helvetica, sans-serif; color: #14223b; background: #f6f8fb; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; box-sizing: border-box; }
+      main { width: min(34rem, 100%); text-align: center; background: white; border-top: .4rem solid #e51837; border-radius: .7rem; padding: 2.5rem 2rem; box-shadow: 0 1rem 3rem rgb(20 34 59 / 12%); }
+      img { width: min(12rem, 60%); height: auto; }
+      h1 { margin: 1.5rem 0 .65rem; font-size: clamp(1.6rem, 6vw, 2.2rem); }
+      p { margin: .5rem auto; line-height: 1.55; color: #4c596e; }
+      a { color: #b70925; font-weight: 700; }
+    </style>
+    {gtmId && (
+      <script is:inline define:vars={{ gtmId }}>
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var firstScript = document.getElementsByTagName('script')[0];
+        var tag = document.createElement('script');
+        tag.async = true;
+        tag.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+        firstScript.parentNode.insertBefore(tag, firstScript);
+      </script>
+    )}
+    <script is:inline define:vars={{ destination, label }}>
+      (function () {
+        var incoming = new URLSearchParams(window.location.search);
+        var target = new URL(destination);
+        var allowed = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'gbraid', 'wbraid', 'msclkid'];
+
+        allowed.forEach(function (key) {
+          var value = incoming.get(key);
+          if (value) target.searchParams.set(key, value);
+        });
+
+        target.searchParams.set('utm_source', target.searchParams.get('utm_source') || 'local_site');
+        target.searchParams.set('utm_medium', target.searchParams.get('utm_medium') || 'referral');
+        target.searchParams.set('utm_campaign', target.searchParams.get('utm_campaign') || 'western_southern_suburbs');
+
+        var source = incoming.get('source');
+        if (source && /^[a-z0-9-]{1,64}$/i.test(source)) {
+          target.searchParams.set('utm_content', target.searchParams.get('utm_content') || source);
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        var redirected = false;
+        var redirect = function () {
+          if (redirected) return;
+          redirected = true;
+          window.location.replace(target.href);
+        };
+
+        window.dataLayer.push({
+          event: 'form_redirect',
+          form_type: label,
+          destination_url: target.href,
+          event_callback: redirect,
+          event_timeout: 700,
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+          var fallback = document.getElementById('continue-link');
+          if (fallback) fallback.href = target.href;
+        });
+        window.setTimeout(redirect, 750);
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <img src="/images/brand/fish-logo.jpg" alt={site.shortName} />
+      <h1>Taking you to our official {label}</h1>
+      <p>Your request will be securely submitted through the FISH Window Cleaning franchise website.</p>
+      <p><a id="continue-link" href={destination}>Continue if you are not redirected</a></p>
+    </main>
+  </body>
+</html>

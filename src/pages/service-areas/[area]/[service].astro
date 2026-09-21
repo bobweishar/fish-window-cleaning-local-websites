@@ -1,0 +1,16 @@
+---
+import LocalServiceLanding from '../../../components/LocalServiceLanding.astro';
+import { localServices, type LocalServicePage } from '../../../data/content';
+
+export function getStaticPaths() {
+  return localServices.map((page) => ({
+    params: { area: page.areaSlug, service: page.serviceSlug },
+    props: { page },
+  }));
+}
+
+interface Props { page: LocalServicePage }
+const { page } = Astro.props;
+---
+
+<LocalServiceLanding page={page} />

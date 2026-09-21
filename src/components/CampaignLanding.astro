@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EstimateBand from './EstimateBand.astro';
+import { estimateLink, site } from '../data/site';
+import type { CampaignPage } from '../data/content';
+
+interface Props { campaign: CampaignPage }
+const { campaign } = Astro.props;
+---
+
+<BaseLayout title={campaign.title} description={campaign.description} image={campaign.image}>
+  <section class="campaign-hero">
+    <figure><img src={campaign.image} alt={campaign.imageAlt} /></figure>
+    <div>
+      <h1>{campaign.headline}</h1>
+      <p>{campaign.copy}</p>
+      <div class="button-row">
+        <a class="button" href={estimateLink(`${campaign.slug}-hero`)} data-track="estimate_click" data-location={`${campaign.slug}-hero`}>Request a fall estimate</a>
+        <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location={`${campaign.slug}-hero`}>Call {site.phoneDisplay}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="campaign-services section">
+    <div class="section-heading"><h2>Build the fall visit around the property.</h2></div>
+    <div class="campaign-service-list">
+      {campaign.services.map((item) => <a href={item.href}><strong>{item.label}</strong><span>{item.copy}</span><b aria-hidden="true">→</b></a>)}
+    </div>
+  </section>
+
+  <section class="campaign-callout section section--ink">
+    <h2>Leaves drop fast. Temperatures follow.</h2>
+    <p>Book while the weather still gives the crew room to work.</p>
+    <a class="button button--light" href={estimateLink(`${campaign.slug}-mid`)} data-track="estimate_click" data-location={`${campaign.slug}-mid`}>Get on the fall route</a>
+  </section>
+
+  <EstimateBand source={`${campaign.slug}-close`} heading={campaign.closeHeading} />
+</BaseLayout>

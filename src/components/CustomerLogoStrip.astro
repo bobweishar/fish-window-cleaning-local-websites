@@ -1,0 +1,31 @@
+---
+import { customerLogos } from '../data/customers';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<section class:list={['customer-proof', { 'customer-proof--compact': compact }]} aria-labelledby={compact ? 'customer-proof-commercial' : 'customer-proof-home'}>
+  <div class="customer-proof__heading" data-reveal>
+    <p class="eyebrow">On the local route</p>
+    <h2 id={compact ? 'customer-proof-commercial' : 'customer-proof-home'}>A few businesses this team has cleaned.</h2>
+  </div>
+  <ul class="customer-logo-list" role="list" data-reveal>
+    {customerLogos.map((customer) => (
+      <li>
+        <img
+          class:list={['customer-logo', customer.className]}
+          src={customer.logo}
+          width={customer.width}
+          height={customer.height}
+          alt={customer.name}
+          loading="lazy"
+          decoding="async"
+        />
+      </li>
+    ))}
+  </ul>
+</section>

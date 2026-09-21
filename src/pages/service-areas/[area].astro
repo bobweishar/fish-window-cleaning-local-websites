@@ -1,0 +1,13 @@
+---
+import AreaLanding from '../../components/AreaLanding.astro';
+import { areas, type AreaPage } from '../../data/content';
+
+export function getStaticPaths() {
+  return areas.map((area) => ({ params: { area: area.slug }, props: { area } }));
+}
+
+interface Props { area: AreaPage }
+const { area } = Astro.props;
+---
+
+<AreaLanding area={area} />

@@ -1,0 +1,50 @@
+---
+import { estimateLink, site } from '../data/site';
+---
+
+<header class="site-header">
+  <div class="utility-bar">
+    <p>Locally owned &amp; operated</p>
+    <p>Chicago’s western + southern suburbs</p>
+  </div>
+  <div class="nav-wrap">
+    <a class="brand" href="/" aria-label="FISH Window Cleaning local home">
+      <img src="/images/brand/fish-logo-square.jpg" width="70" height="70" alt="FISH Window Cleaning" />
+      <span><strong>FISH Window Cleaning</strong><small>Western + southern suburbs</small></span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="/services/residential-window-cleaning/">Residential</a>
+      <a href="/services/commercial-window-cleaning/">Commercial</a>
+      <a href="/services/gutter-cleaning/">Gutters</a>
+      <a href="/#service-areas">Areas</a>
+      <a href="/team/">Our team</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="phone-link" href={site.phoneHref} data-track="phone_click" data-location="header">{site.phoneDisplay}</a>
+      <a class="button button--small" href={estimateLink('header')} data-track="estimate_click" data-location="header">Free estimate</a>
+    </div>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <a href="/services/residential-window-cleaning/">Residential cleaning</a>
+    <a href="/services/commercial-window-cleaning/">Commercial cleaning</a>
+    <a href="/services/gutter-cleaning/">Gutter cleaning</a>
+    <a href="/#service-areas">Service areas</a>
+    <a href="/team/">Meet the local team</a>
+    <a href={site.phoneHref}>{site.phoneDisplay}</a>
+  </div>
+</header>
+
+<script is:inline>
+  var toggle = document.querySelector('.menu-toggle');
+  var menu = document.getElementById('mobile-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', function () {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!open));
+      menu.hidden = open;
+    });
+  }
+</script>

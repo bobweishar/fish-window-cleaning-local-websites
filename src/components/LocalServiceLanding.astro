@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EstimateBand from './EstimateBand.astro';
+import { estimateLink, site } from '../data/site';
+import { getArea, getService, type LocalServicePage } from '../data/content';
+
+interface Props { page: LocalServicePage }
+const { page } = Astro.props;
+const area = getArea(page.areaSlug)!;
+const service = getService(page.serviceSlug)!;
+const source = `${page.areaSlug}-${page.serviceSlug}`;
+---
+
+<BaseLayout
+  title={page.title}
+  description={page.description}
+  image={page.image}
+  additionalSchema={{
+    '@type': 'Service',
+    name: `${service.name} in ${area.name}, Illinois`,
+    serviceType: service.name,
+    areaServed: { '@type': 'City', name: area.name, addressRegion: 'IL' },
+  }}
+>
+  <section class="local-service-hero">
+    <div class="local-service-hero__copy">
+      <h1>{page.headline}</h1>
+      <p class="location-line">{service.name} · {area.name}, Illinois</p>
+      <p>{page.copy}</p>
+      <div class="button-row">
+        <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free estimate</a>
+        <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location={`${source}-hero`}>Call {site.phoneDisplay}</a>
+      </div>
+    </div>
+    <figure><img src={page.image} alt={page.imageAlt} /></figure>
+  </section>
+
+  <section class="local-reasons section">
+    <div class="section-heading"><h2>Why this service fits the property.</h2></div>
+    <div class="scope-grid">
+      {page.reasons.map((reason) => <article><h3>{reason.title}</h3><p>{reason.copy}</p></article>)}
+    </div>
+  </section>
+
+  <section class="local-service-proof section section--ink">
+    <div><h2>One local operation from estimate to clean.</h2><p>Uniformed crew, local phone number, and the same franchise responsible for the finished work.</p></div>
+    <div class="local-service-proof__links">
+      <a href={`/services/${service.slug}/`}>All {service.name.toLowerCase()} details <span aria-hidden="true">→</span></a>
+      <a href={`/service-areas/${area.slug}/`}>More services in {area.name} <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <section class="faq-section section">
+    <div class="section-heading"><h2>{area.name} questions.</h2></div>
+    <div class="faq-list">
+      {page.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
+    </div>
+  </section>
+
+  <EstimateBand source={`${source}-close`} heading={page.closeHeading} />
+</BaseLayout>

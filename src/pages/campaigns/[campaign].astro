@@ -1,0 +1,13 @@
+---
+import CampaignLanding from '../../components/CampaignLanding.astro';
+import { campaigns, type CampaignPage } from '../../data/content';
+
+export function getStaticPaths() {
+  return campaigns.map((campaign) => ({ params: { campaign: campaign.slug }, props: { campaign } }));
+}
+
+interface Props { campaign: CampaignPage }
+const { campaign } = Astro.props;
+---
+
+<CampaignLanding campaign={campaign} />

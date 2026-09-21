@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EstimateBand from './EstimateBand.astro';
+import { estimateLink, site } from '../data/site';
+import { localServices, services, type AreaPage } from '../data/content';
+
+interface Props { area: AreaPage }
+const { area } = Astro.props;
+const primaryServices = services.filter((service) => ['residential-window-cleaning', 'commercial-window-cleaning', 'gutter-cleaning', 'pressure-washing'].includes(service.slug));
+---
+
+<BaseLayout
+  title={area.title}
+  description={area.description}
+  image="/images/jobs/4305.jpg"
+  additionalSchema={{
+    '@type': 'Service',
+    name: `Window cleaning in ${area.name}, Illinois`,
+    serviceType: 'Residential and commercial window cleaning',
+    areaServed: { '@type': 'City', name: area.name, addressRegion: 'IL' },
+  }}
+>
+  <section class="local-hero">
+    <div>
+      <h1>{area.heroHeadline}</h1>
+      <p class="location-line">{area.name}, Illinois</p>
+      <p>{area.heroCopy}</p>
+      <div class="button-row">
+        <a class="button" href={estimateLink(`${area.slug}-hero`)} data-track="estimate_click" data-location={`${area.slug}-hero`}>Request a {area.name} estimate</a>
+        <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location={`${area.slug}-hero`}>Call {site.phoneDisplay}</a>
+      </div>
+    </div>
+    <figure><img src="/images/jobs/4305.jpg" width="720" height="567" alt={`Local FISH Window Cleaning vans serving ${area.name}, Illinois`} /></figure>
+  </section>
+
+  <section class="hinsdale-grid section">
+    {area.details.map((detail) => <div><h2>{detail.title}</h2><p>{detail.copy}</p></div>)}
+  </section>
+
+  <section class="hinsdale-services section section--mist">
+    <div class="section-heading"><h2>Local service paths.</h2></div>
+    <div class="service-lines">
+      {primaryServices.map((service) => {
+        const localPage = localServices.find((item) => item.areaSlug === area.slug && item.serviceSlug === service.slug);
+        const href = localPage ? `/service-areas/${area.slug}/${service.slug}/` : `/services/${service.slug}/`;
+        return <a href={href}><span>{area.name}</span><strong>{service.name}</strong><b aria-hidden="true">→</b></a>;
+      })}
+    </div>
+  </section>
+
+  <section class="local-work-row section">
+    <figure><img src="/images/jobs/4260.jpg" width="476" height="720" alt="Local FISH professional cleaning a coach light on a brick home" loading="lazy" /><figcaption>Home detail care</figcaption></figure>
+    <figure><img src="/images/jobs/4503.jpg" width="720" height="604" alt="Before and after gutter cleaning by the local FISH team" loading="lazy" /><figcaption>Gutter cleaning</figcaption></figure>
+    <figure><img src="/images/jobs/4542.jpg" width="576" height="720" alt="FISH professional cleaning local storefront glass" loading="lazy" /><figcaption>Storefront route</figcaption></figure>
+  </section>
+
+  <section class="hinsdale-note section section--ink">
+    <h2>{area.noteHeadline}</h2>
+    <p>{area.noteCopy}</p>
+  </section>
+
+  <section class="faq-section section">
+    <div class="section-heading"><h2>{area.name} questions.</h2></div>
+    <div class="faq-list">
+      {area.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
+    </div>
+  </section>
+
+  <EstimateBand source={`${area.slug}-close`} heading={`Put the ${area.name} property on the route.`} />
+</BaseLayout>

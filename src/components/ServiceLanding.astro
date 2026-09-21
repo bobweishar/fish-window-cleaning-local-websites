@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EstimateBand from './EstimateBand.astro';
+import CustomerLogoStrip from './CustomerLogoStrip.astro';
+import { estimateLink, site } from '../data/site';
+import { areas, localServices, type ServicePage } from '../data/content';
+
+interface Props { service: ServicePage }
+const { service } = Astro.props;
+const source = service.slug.replaceAll('-', '_');
+const isCommercial = service.slug === 'commercial-window-cleaning';
+---
+
+<BaseLayout
+  title={service.title}
+  description={service.description}
+  image={service.heroImage}
+  additionalSchema={{
+    '@type': 'Service',
+    name: service.name,
+    serviceType: service.name,
+    areaServed: site.towns.map((name) => ({ '@type': 'City', name, addressRegion: 'IL' })),
+  }}
+>
+  <section class:list={['service-hero', { 'service-hero--commercial': isCommercial }]}>
+    <div class="service-hero-copy">
+      <h1>{service.heroHeadline}</h1>
+      <p class="location-line">{service.name}</p>
+      <p>{service.heroCopy}</p>
+      <div class="button-row">
+        <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free estimate</a>
+        <a class:list={['button', isCommercial ? 'button--outline-light' : 'button--outline']} href={site.phoneHref} data-track="phone_click" data-location={`${source}-hero`}>Call {site.phoneDisplay}</a>
+      </div>
+    </div>
+    <figure class:list={['service-hero-photo', { 'service-hero-photo--contain': service.heroFit === 'contain' }]}>
+      <img src={service.heroImage} alt={service.heroAlt} />
+    </figure>
+  </section>
+
+  <section class="scope-section section">
+    <div class="section-heading"><h2>{service.scopeHeading}</h2></div>
+    <div class="scope-grid">
+      {service.scope.map((item) => <article><h3>{item.title}</h3><p>{item.copy}</p></article>)}
+    </div>
+  </section>
+
+  {isCommercial && <CustomerLogoStrip compact />}
+
+  <section class="care-section section section--mist">
+    <div class:list={['care-media', { 'care-media--contain': service.heroFit === 'contain' }]}>
+      <img src={service.featureImage} alt={service.featureAlt} loading="lazy" />
+    </div>
+    <div>
+      <h2>{service.featureHeading}</h2>
+      {service.featureCopy && <p>{service.featureCopy}</p>}
+      <ul class="check-list">{service.checks.map((check) => <li>{check}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="local-condition section">
+    <div><h2>{service.localHeading}</h2><p>{service.localCopy}</p></div>
+    <figure><img src={service.localImage} alt={service.localAlt} loading="lazy" /></figure>
+  </section>
+
+  <section class="area-links-section section section--mist">
+    <h2>{service.name}, closer to home.</h2>
+    <div class="area-link-list">
+      {areas.map((area) => {
+        const localPage = localServices.find((item) => item.areaSlug === area.slug && item.serviceSlug === service.slug);
+        const href = localPage ? `/service-areas/${area.slug}/${service.slug}/` : `/service-areas/${area.slug}/`;
+        return <a href={href}><strong>{area.name}</strong><span>{localPage ? `${service.name} in ${area.name}` : 'Local service details'}</span><b aria-hidden="true">→</b></a>;
+      })}
+    </div>
+  </section>
+
+  <section class="faq-section section">
+    <div class="section-heading"><h2>Before you book.</h2></div>
+    <div class="faq-list">
+      {service.faqs.map((faq) => <details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}
+    </div>
+  </section>
+
+  <EstimateBand source={`${source}-close`} heading={service.closeHeading} />
+</BaseLayout>

@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-20T23:47:34Z",
+  "title": "Design System: Dave's Local FISH Team",
+  "extensions": {
+    "colorMeta": {
+      "fish-red": {
+        "role": "primary",
+        "displayName": "FISH Red",
+        "canonical": "#e51837",
+        "tonalRamp": ["oklch(22% 0.10 23)", "oklch(31% 0.14 23)", "oklch(40% 0.18 23)", "oklch(49% 0.22 23)", "oklch(58% 0.23 23)", "oklch(69% 0.18 23)", "oklch(82% 0.10 23)", "oklch(94% 0.035 23)"]
+      },
+      "fish-red-dark": {
+        "role": "primary",
+        "displayName": "Dispatch Red",
+        "canonical": "#b80f29",
+        "tonalRamp": ["oklch(18% 0.08 23)", "oklch(26% 0.12 23)", "oklch(34% 0.16 23)", "oklch(42% 0.19 23)", "oklch(52% 0.18 23)", "oklch(65% 0.14 23)", "oklch(80% 0.08 23)", "oklch(94% 0.025 23)"]
+      },
+      "deep-ink": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "canonical": "#141617",
+        "tonalRamp": ["oklch(15% 0.005 230)", "oklch(25% 0.005 230)", "oklch(36% 0.005 230)", "oklch(48% 0.005 230)", "oklch(61% 0.004 230)", "oklch(73% 0.004 230)", "oklch(85% 0.003 230)", "oklch(95% 0.002 230)"]
+      },
+      "working-charcoal": {
+        "role": "neutral",
+        "displayName": "Working Charcoal",
+        "canonical": "#4d4d4d",
+        "tonalRamp": ["oklch(18% 0 0)", "oklch(28% 0 0)", "oklch(38% 0 0)", "oklch(49% 0 0)", "oklch(60% 0 0)", "oklch(72% 0 0)", "oklch(84% 0 0)", "oklch(95% 0 0)"]
+      },
+      "clear-white": {
+        "role": "neutral",
+        "displayName": "Clear White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(27% 0 0)", "oklch(39% 0 0)", "oklch(51% 0 0)", "oklch(63% 0 0)", "oklch(75% 0 0)", "oklch(87% 0 0)", "oklch(100% 0 0)"]
+      },
+      "warm-mist": {
+        "role": "neutral",
+        "displayName": "Warm Mist",
+        "canonical": "#f4f3f1",
+        "tonalRamp": ["oklch(15% 0.008 75)", "oklch(27% 0.008 75)", "oklch(39% 0.008 75)", "oklch(51% 0.008 75)", "oklch(63% 0.008 75)", "oklch(75% 0.008 75)", "oklch(87% 0.008 75)", "oklch(96% 0.008 75)"]
+      },
+      "route-stone": {
+        "role": "neutral",
+        "displayName": "Route Stone",
+        "canonical": "#ebe7e1",
+        "tonalRamp": ["oklch(15% 0.014 70)", "oklch(27% 0.014 70)", "oklch(39% 0.014 70)", "oklch(51% 0.014 70)", "oklch(63% 0.014 70)", "oklch(75% 0.014 70)", "oklch(87% 0.014 70)", "oklch(93% 0.014 70)"]
+      },
+      "rule-line": {
+        "role": "neutral",
+        "displayName": "Rule Line",
+        "canonical": "#ddd8d2",
+        "tonalRamp": ["oklch(15% 0.012 70)", "oklch(27% 0.012 70)", "oklch(39% 0.012 70)", "oklch(51% 0.012 70)", "oklch(63% 0.012 70)", "oklch(75% 0.012 70)", "oklch(86% 0.012 70)", "oklch(91% 0.012 70)"]
+      },
+      "caption-pink": {
+        "role": "secondary",
+        "displayName": "Caption Pink",
+        "canonical": "#ff6179",
+        "tonalRamp": ["oklch(20% 0.09 17)", "oklch(30% 0.13 17)", "oklch(41% 0.17 17)", "oklch(52% 0.20 17)", "oklch(64% 0.19 17)", "oklch(75% 0.14 17)", "oklch(86% 0.08 17)", "oklch(95% 0.03 17)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Field Display", "purpose": "Short hero statements with a stacked editorial rhythm." },
+      "headline": { "displayName": "Section Headline", "purpose": "Major section openings and call-to-action bands." },
+      "title": { "displayName": "Operational Title", "purpose": "Cards, process steps, route rows, and FAQ questions." },
+      "body": { "displayName": "Human Detail", "purpose": "Plainspoken service explanations, proof, and answers." },
+      "label": { "displayName": "Route Label", "purpose": "Locations, utility text, provenance, and numbered markers." }
+    },
+    "shadows": [
+      { "name": "shadow-panel", "value": "0 18px 44px rgba(20, 22, 23, 0.12)", "purpose": "Broad, quiet lift for important photo panels and the owner portrait." },
+      { "name": "shadow-action-rest", "value": "0 10px 26px rgba(229, 24, 55, 0.18)", "purpose": "Resting emphasis for the primary estimate action." },
+      { "name": "shadow-action-hover", "value": "0 14px 34px rgba(229, 24, 55, 0.24)", "purpose": "Hover lift for the primary estimate action." },
+      { "name": "shadow-mobile-handoff", "value": "0 -10px 28px rgba(20, 22, 23, 0.12)", "purpose": "Separates fixed mobile call and estimate actions from page content." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(.22, 1, .36, 1)", "purpose": "Default ease for reveals, image scaling, underline growth, and button lift." },
+      { "name": "duration-action", "value": "200ms", "purpose": "Button, focus-adjacent, and disclosure-icon state changes." },
+      { "name": "duration-reveal", "value": "700ms", "purpose": "A restrained 24px upward content settle as sections enter view." },
+      { "name": "squeegee-clear", "value": "1250ms 150ms delay", "purpose": "Signature left-to-right blur wipe revealing the official hero route image." },
+      { "name": "reduced-motion", "value": "0.01ms single iteration", "purpose": "Effectively removes animation while keeping all content immediately visible." }
+    ],
+    "breakpoints": [
+      { "name": "navigation-collapse", "value": "1120px" },
+      { "name": "stacked-layout", "value": "820px" },
+      { "name": "narrow-phone", "value": "520px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Estimate Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The dominant handoff to the official FISH estimate flow.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">REQUEST A FREE ESTIMATE</a>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:14px 22px; border:2px solid var(--red, #e51837); border-radius:12px; background:var(--red, #e51837); color:#fff; font-family:var(--display, 'Arial Narrow', sans-serif); font-size:15px; font-weight:700; text-decoration:none; box-shadow:0 10px 26px rgba(229,24,55,.18); transition:transform .2s var(--ease, cubic-bezier(.22,1,.36,1)), box-shadow .2s var(--ease, cubic-bezier(.22,1,.36,1)), background .2s; } .ds-btn-primary:hover { transform:translateY(-2px); background:var(--red-dark, #b80f29); box-shadow:0 14px 34px rgba(229,24,55,.24); } .ds-btn-primary:focus-visible { outline:3px solid var(--red, #e51837); outline-offset:4px; } .ds-btn-primary:active { transform:translateY(0); }"
+    },
+    {
+      "name": "Outline Call Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "The secondary direct-call action beside the estimate handoff.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">CALL (630) 757-3474</a>",
+      "css": ".ds-btn-outline { display:inline-flex; align-items:center; justify-content:center; min-height:54px; padding:14px 22px; border:2px solid var(--ink, #141617); border-radius:12px; background:transparent; color:var(--ink, #141617); font-family:var(--display, 'Arial Narrow', sans-serif); font-size:15px; font-weight:700; text-decoration:none; transition:background .2s, color .2s, transform .2s var(--ease, cubic-bezier(.22,1,.36,1)); } .ds-btn-outline:hover { background:var(--ink, #141617); color:#fff; transform:translateY(-2px); } .ds-btn-outline:focus-visible { outline:3px solid var(--red, #e51837); outline-offset:4px; } .ds-btn-outline:active { transform:translateY(0); }"
+    },
+    {
+      "name": "Local Navigation",
+      "kind": "nav",
+      "description": "A restrained white route bar with official branding, local service links, and one red action.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-brand\" href=\"#\"><span class=\"ds-nav-mark\">FISH</span><span>Dave's local team</span></a><div class=\"ds-nav-links\"><a href=\"#\">Residential</a><a href=\"#\">Commercial</a><a href=\"#\">Hinsdale</a></div><a class=\"ds-nav-action\" href=\"#\">FREE ESTIMATE</a></nav>",
+      "css": ".ds-nav { display:flex; align-items:center; gap:28px; min-height:86px; padding:8px 24px; border-bottom:1px solid var(--rule, #ddd8d2); background:rgba(255,255,255,.97); color:var(--ink, #141617); font-family:var(--body, sans-serif); } .ds-nav a { color:inherit; text-decoration:none; font-weight:700; } .ds-nav-brand { display:flex; align-items:center; gap:12px; margin-right:auto; font-family:var(--display, 'Arial Narrow', sans-serif); } .ds-nav-mark { display:grid; place-items:center; width:52px; height:52px; border-radius:8px; background:var(--red, #e51837); color:#fff; font-size:12px; } .ds-nav-links { display:flex; gap:26px; } .ds-nav-links a { position:relative; font-size:14px; } .ds-nav-links a::after { content:''; position:absolute; left:0; right:100%; bottom:-7px; height:2px; background:var(--red, #e51837); transition:right .25s var(--ease, cubic-bezier(.22,1,.36,1)); } .ds-nav-links a:hover::after { right:0; } .ds-nav-action { padding:11px 16px; border-radius:12px; background:var(--red, #e51837); color:#fff !important; font-family:var(--display, 'Arial Narrow', sans-serif); } .ds-nav a:focus-visible { outline:3px solid var(--red, #e51837); outline-offset:4px; }"
+    },
+    {
+      "name": "Photographic Service Path",
+      "kind": "card",
+      "refersTo": "photo-panel",
+      "description": "A large proof image that routes visitors into residential or commercial service.",
+      "html": "<a class=\"ds-photo-panel\" href=\"#\"><div class=\"ds-photo-field\"></div><div class=\"ds-photo-copy\"><h3>Residential window cleaning</h3><p>Interior, exterior, screens, tracks, and the details that make a room feel brighter.</p><strong>SEE RESIDENTIAL SERVICE →</strong></div></a>",
+      "css": ".ds-photo-panel { position:relative; min-height:420px; display:flex; align-items:flex-end; overflow:hidden; border-radius:16px; background:var(--warm, #ebe7e1); color:#fff; text-decoration:none; box-shadow:0 18px 44px rgba(20,22,23,.12); } .ds-photo-field { position:absolute; inset:0; background:linear-gradient(135deg, #8b9188, #d9d5cc); transition:transform .7s var(--ease, cubic-bezier(.22,1,.36,1)); } .ds-photo-panel::after { content:''; position:absolute; inset:0; background:linear-gradient(to top, rgba(15,17,18,.96) 0%, rgba(15,17,18,.25) 64%, rgba(15,17,18,.02)); } .ds-photo-copy { position:relative; z-index:1; padding:36px; } .ds-photo-copy h3 { max-width:10ch; margin:0 0 12px; font-family:var(--display, 'Arial Narrow', sans-serif); font-size:42px; line-height:1.05; } .ds-photo-copy p { max-width:42ch; margin:0; color:rgba(255,255,255,.74); font-family:var(--body, sans-serif); line-height:1.5; } .ds-photo-copy strong { display:inline-flex; margin-top:25px; padding-bottom:5px; border-bottom:2px solid var(--red, #e51837); font-family:var(--body, sans-serif); font-size:13px; } .ds-photo-panel:hover .ds-photo-field { transform:scale(1.035); } .ds-photo-panel:focus-visible { outline:3px solid var(--red, #e51837); outline-offset:4px; }"
+    },
+    {
+      "name": "Proof Rail",
+      "kind": "custom",
+      "description": "A ruled strip of concrete local trust signals with plain-language explanation.",
+      "html": "<div class=\"ds-proof-rail\"><p><strong>Locally owned</strong><span>by Dave Weishar</span></p><p><strong>Uniformed professionals</strong><span>recognizable at your door</span></p><p><strong>Background checked</strong><span>people you can welcome in</span></p><p><strong>Home + business</strong><span>one accountable local team</span></p></div>",
+      "css": ".ds-proof-rail { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--rule, #ddd8d2); background:#fff; } .ds-proof-rail p { display:grid; margin:0; padding:27px 22px; border-right:1px solid var(--rule, #ddd8d2); font-family:var(--body, sans-serif); } .ds-proof-rail p:last-child { border-right:0; } .ds-proof-rail strong { color:var(--ink, #141617); font-family:var(--display, 'Arial Narrow', sans-serif); font-size:15px; } .ds-proof-rail span { margin-top:4px; color:var(--charcoal, #4d4d4d); font-size:13px; }"
+    },
+    {
+      "name": "Route Board",
+      "kind": "custom",
+      "description": "The signature operational list for official local service towns.",
+      "html": "<div class=\"ds-route-board\"><div><span>01</span><strong>Hinsdale</strong><small>IL</small></div><div><span>02</span><strong>Oak Brook</strong><small>IL</small></div><div><span>03</span><strong>Burr Ridge</strong><small>IL</small></div></div>",
+      "css": ".ds-route-board { border-top:4px solid var(--ink, #141617); background:#fff; } .ds-route-board div { display:grid; grid-template-columns:54px 1fr 32px; gap:20px; align-items:center; min-height:58px; border-bottom:1px solid var(--rule, #ddd8d2); } .ds-route-board span, .ds-route-board small { color:var(--red, #e51837); font-family:var(--body, sans-serif); font-size:11px; font-weight:700; letter-spacing:.08em; } .ds-route-board strong { color:var(--ink, #141617); font-family:var(--display, 'Arial Narrow', sans-serif); font-size:19px; }"
+    },
+    {
+      "name": "FAQ Disclosure",
+      "kind": "custom",
+      "description": "A native, keyboard-accessible answer row with route-board structure.",
+      "html": "<details class=\"ds-faq\"><summary>Do you clean both homes and businesses?<span aria-hidden=\"true\">+</span></summary><p>Yes. Dave's local team serves residential and commercial properties.</p></details>",
+      "css": ".ds-faq { border-top:1px solid var(--rule, #ddd8d2); border-bottom:1px solid var(--rule, #ddd8d2); color:var(--ink, #141617); } .ds-faq summary { display:flex; justify-content:space-between; gap:30px; padding:26px 0; cursor:pointer; list-style:none; font-family:var(--display, 'Arial Narrow', sans-serif); font-size:24px; font-weight:700; } .ds-faq summary::-webkit-details-marker { display:none; } .ds-faq summary span { color:var(--red, #e51837); transition:transform .2s; } .ds-faq[open] summary span { transform:rotate(45deg); } .ds-faq p { max-width:70ch; margin:-6px 0 28px; color:var(--charcoal, #4d4d4d); font-family:var(--body, sans-serif); line-height:1.55; } .ds-faq summary:focus-visible { outline:3px solid var(--red, #e51837); outline-offset:4px; }"
+    },
+    {
+      "name": "Estimate Handoff Band",
+      "kind": "custom",
+      "description": "The full-width close that makes the official estimate action dominant and keeps the local call visible.",
+      "html": "<section class=\"ds-estimate-band\"><div><h2>Ready for a clearer view?</h2><p>Tell Dave's local team what you need. The official FISH estimate form opens next.</p></div><div class=\"ds-estimate-actions\"><a class=\"ds-estimate-button\" href=\"#\">REQUEST A FREE ESTIMATE</a><a class=\"ds-estimate-call\" href=\"#\">CALL (630) 757-3474</a></div></section>",
+      "css": ".ds-estimate-band { display:flex; justify-content:space-between; align-items:flex-end; gap:50px; padding:72px; background:var(--red, #e51837); color:#fff; } .ds-estimate-band h2 { max-width:12ch; margin:0 0 14px; font-family:var(--display, 'Arial Narrow', sans-serif); font-size:56px; line-height:1.02; } .ds-estimate-band p { max-width:56ch; margin:0; color:rgba(255,255,255,.8); font-family:var(--body, sans-serif); line-height:1.55; } .ds-estimate-actions { display:flex; flex-wrap:wrap; align-items:center; gap:18px; } .ds-estimate-button { padding:14px 22px; border:2px solid #fff; border-radius:12px; background:#fff; color:var(--ink, #141617); font-family:var(--display, 'Arial Narrow', sans-serif); font-weight:700; text-decoration:none; box-shadow:0 12px 30px rgba(0,0,0,.14); transition:transform .2s var(--ease, cubic-bezier(.22,1,.36,1)), background .2s; } .ds-estimate-button:hover { transform:translateY(-2px); background:var(--mist, #f4f3f1); } .ds-estimate-call { color:#fff; font-family:var(--body, sans-serif); font-weight:700; text-underline-offset:.2em; } .ds-estimate-band a:focus-visible { outline:3px solid #fff; outline-offset:4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Red Route Board",
+    "overview": "This system should feel like a dependable local crew's field notebook made public: direct, specific, orderly, and full of visible evidence. Official franchise photography, familiar suburban materials, numbered routes, and workmanlike dividers establish trust before promotional language does. FISH red behaves like a van, marker, or dispatch signal against deep ink, clear white, and warm mist—not like decoration spread across every surface.\n\nThe editorial scale gives the operation a distinctive voice without making it precious. Condensed headlines are blunt and memorable; the humanist body face stays calm and readable. Composition alternates between large photographic proof and disciplined lists, rails, grids, and scoreboards. Restrained Chicago sports humor can punctuate the experience, but professionalism and local accountability remain the dominant impression.",
+    "keyCharacteristics": [
+      "Proof-heavy and field-forward, with current official work photography doing real informational work.",
+      "Condensed, decisive headlines paired with a readable humanist body voice.",
+      "FISH red used as a directional signal against deep ink, white, and warm suburban neutrals.",
+      "Route-board numbering, rules, labels, and captions that make local operations visible.",
+      "Generous editorial spacing, strong rectangular structure, and gently softened working surfaces.",
+      "One dominant official estimate handoff, supported by a direct local call path."
+    ],
+    "rules": [
+      { "name": "The Red Is a Signal Rule", "body": "Reserve FISH Red for actions, local markers, proof labels, and a few decisive bands; its clarity depends on restraint.", "section": "colors" },
+      { "name": "The Proof Stays True Rule", "body": "Photography must be official, current franchise work or an approved local portrait; never color-treat an unrelated stock image into apparent proof.", "section": "colors" },
+      { "name": "The Field Headline Rule", "body": "Headlines are short, stacked, and declarative; do not soften them with thin weights, high-fashion serif styling, or generic centered marketing language.", "section": "typography" },
+      { "name": "The Human Detail Rule", "body": "Operational detail stays in the body face with comfortable line-height; condensed type is an accent and hierarchy tool, not a long-reading face.", "section": "typography" },
+      { "name": "The One Clear Handoff Rule", "body": "Each page should build toward the official estimate action as the dominant endpoint, with the phone call visible as its practical companion rather than a competing funnel.", "section": "layout" },
+      { "name": "The Flat-by-Default Rule", "body": "Do not give every section or list item a shadow; elevation marks action, fixed position, or photographic emphasis.", "section": "elevation" },
+      { "name": "The Working Rectangle Rule", "body": "Prefer disciplined rectangles with modest corner softening; avoid capsules, excessive circles, glassmorphism blobs, and ornamental geometry unrelated to the route-board language.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do lead with official, current franchise photography and identify what the image proves.",
+      "Do use FISH Red as a scarce directional marker for estimate actions, route cues, active details, and the occasional full-width handoff.",
+      "Do pair compact field-editorial headlines with plainspoken, readable explanations.",
+      "Do use rules, numbering, captions, and provenance notes to make local operational proof scannable.",
+      "Do preserve the estimate-first, call-second action hierarchy on desktop and mobile.",
+      "Do keep every motion flourish legible and complete when reduced motion is enabled."
+    ],
+    "donts": [
+      "Don't invent reviews, ratings, customer identities, project claims, or local photography to fill a layout.",
+      "Don't turn the interface into a generic franchise template, a luxury-home brochure, or a collection of interchangeable rounded cards.",
+      "Don't use FISH Red as a broad decorative wash across unrelated surfaces; it is the system's dispatch signal.",
+      "Don't introduce pill controls, glassmorphism, gradients unrelated to photo legibility, or playful sports graphics.",
+      "Don't let Chicago sports humor overwhelm service clarity, local credibility, or professional tone.",
+      "Don't create a second conversion funnel when the official FISH estimate and local phone path already provide the handoff."
+    ]
+  }
+}
