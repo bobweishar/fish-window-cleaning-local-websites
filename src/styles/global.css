@@ -289,7 +289,10 @@ nav a:hover::after { right: 0; }
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
-.customer-proof--compact { padding-top: clamp(58px, 6vw, 88px); padding-bottom: clamp(58px, 6vw, 88px); }
+.customer-proof--compact { padding-top: 34px; padding-bottom: 34px; }
+.customer-proof--compact .customer-proof__heading { display: block; margin-bottom: 22px; }
+.customer-proof--compact .customer-proof__heading h2 { max-width: none; font-size: clamp(1.35rem, 2vw, 1.75rem); }
+.customer-proof--compact .customer-logo-list li { min-height: 108px; padding: 20px; }
 .customer-proof__heading { display: grid; grid-template-columns: minmax(170px, .42fr) minmax(0, 1fr); align-items: end; gap: 36px; margin-bottom: clamp(34px, 5vw, 62px); }
 .customer-proof__heading h2 { max-width: 12ch; margin: 0; font-size: clamp(2.2rem, 4vw, 4rem); }
 .customer-proof__heading .eyebrow { margin: 0 0 9px; color: var(--red); font-family: var(--display); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }

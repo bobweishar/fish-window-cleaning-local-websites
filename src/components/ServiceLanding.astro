@@ -39,14 +39,14 @@ const description = `${service.name} for Hinsdale homes and businesses from a lo
     </figure>
   </section>
 
+  {isCommercial && <CustomerLogoStrip compact />}
+
   <section class="scope-section section">
     <div class="section-heading"><h2>{service.scopeHeading}</h2></div>
     <div class="scope-grid">
       {service.scope.map((item) => <article><h3>{item.title}</h3><p>{item.copy}</p></article>)}
     </div>
   </section>
-
-  {isCommercial && <CustomerLogoStrip compact />}
 
   <section class="care-section section section--mist">
     <div class:list={['care-media', { 'care-media--contain': service.heroFit === 'contain' }]}>
