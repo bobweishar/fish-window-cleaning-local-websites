@@ -243,8 +243,8 @@ nav a:hover::after { right: 0; }
 .route-board a { text-decoration-color: var(--rule); }
 .route-board a:hover { text-decoration-color: var(--red); }
 
-.faq-section { max-width: 1180px; margin: 0 auto; }
-.faq-section .section-heading { grid-template-columns: 1fr; }
+.faq-section { max-width: none; display: grid; grid-template-columns: minmax(240px, .72fr) minmax(420px, 1.28fr); gap: clamp(54px, 9vw, 120px); align-items: start; }
+.faq-section .section-heading { position: sticky; top: 40px; grid-template-columns: 1fr; margin-bottom: 0; }
 .faq-list { border-top: 3px solid var(--ink); }
 .faq-list details { border-bottom: 1px solid var(--rule); }
 .faq-list summary { display: flex; justify-content: space-between; gap: 30px; padding: 26px 0; cursor: pointer; list-style: none; font-family: var(--display); font-size: clamp(1.15rem, 2vw, 1.55rem); }
@@ -492,7 +492,8 @@ nav a:hover::after { right: 0; }
   .proof-rail p:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
   .chicago-callout { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
   .section { padding: 82px 22px; }
-  .section-heading, .path-grid, .owner-section, .route-section, .care-section, .local-condition, .commercial-rhythm, .hinsdale-grid, .team-intro, .leader-section, .community-story, .team-standards, .local-service-proof, .campaign-callout { grid-template-columns: 1fr; }
+  .section-heading, .path-grid, .owner-section, .route-section, .care-section, .local-condition, .commercial-rhythm, .hinsdale-grid, .team-intro, .leader-section, .community-story, .team-standards, .local-service-proof, .campaign-callout, .faq-section { grid-template-columns: 1fr; }
+  .faq-section .section-heading { position: static; margin-bottom: 46px; }
   .more-services { grid-template-columns: 1fr; }
   .more-services a { border-right: 0; }
   .campaign-hero figure { order: 2; }
