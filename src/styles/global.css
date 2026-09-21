@@ -465,7 +465,7 @@ nav a:hover::after { right: 0; }
 }
 
 @media (max-width: 1120px) {
-  .brand span, nav { display: none; }
+  nav { display: none; }
   .menu-toggle { display: block; }
   .hero { grid-template-columns: 1fr 1fr; }
   .hero-copy { padding-left: 40px; padding-right: 40px; }
