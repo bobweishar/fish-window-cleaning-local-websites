@@ -29,6 +29,11 @@ export const site = {
 
 export const googleProfile = {
   url: 'https://share.google/lSqIoWPB0V9ENHIdp',
+  reviewUrl: 'https://g.page/r/Ce6wZkq85fMtEAE/review',
+};
+
+export const facebookProfile = {
+  url: 'https://www.facebook.com/fishchicagowesternandsouthernsuburbs',
 };
 
 export const estimateLink = (source: string) =>

@@ -1,5 +1,5 @@
 ---
-import { site } from '../data/site';
+import { facebookProfile, googleProfile, site } from '../data/site';
 ---
 
 <footer class="site-footer">
@@ -21,6 +21,8 @@ import { site } from '../data/site';
       <a href={site.phoneHref}>{site.phoneDisplay}</a>
       <address>Serving Hinsdale, Illinois</address>
       <a href={site.officialPage}>Official FISH franchise page</a>
+      <a href={googleProfile.reviewUrl} target="_blank" rel="noopener noreferrer" data-track="google_review_click" data-location="footer">Leave a Google review</a>
+      <a href={facebookProfile.url} target="_blank" rel="noopener noreferrer" data-track="facebook_click" data-location="footer">Follow us on Facebook</a>
     </div>
   </div>
   <div class="footer-base">

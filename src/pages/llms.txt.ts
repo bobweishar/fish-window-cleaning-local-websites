@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { googleProfile, site } from '../data/site';
+import { facebookProfile, googleProfile, site } from '../data/site';
 import { services } from '../data/content';
 
 export const GET: APIRoute = ({ site: origin }) => {
@@ -19,6 +19,8 @@ export const GET: APIRoute = ({ site: origin }) => {
 - Address: ${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}
 - Official franchise page: ${site.officialPage}
 - Google Business Profile: ${googleProfile.url}
+- Google review link: ${googleProfile.reviewUrl}
+- Facebook: ${facebookProfile.url}
 - Primary market: Hinsdale, Illinois
 - Official franchise territory: ${site.towns.join(', ')}, Illinois
 
