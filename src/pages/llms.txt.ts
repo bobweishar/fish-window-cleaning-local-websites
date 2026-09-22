@@ -26,10 +26,10 @@ export const GET: APIRoute = ({ site: origin }) => {
 - Residential interior and exterior window cleaning
 - Commercial window cleaning for storefronts, offices, restaurants, and other local properties
 - Recurring commercial service where the property and schedule are a fit
-- Gutter cleaning, pressure washing, awning cleaning, screen cleaning, skylight cleaning, and exterior light-fixture cleaning, subject to estimate and availability
+- Gutter cleaning, pressure washing, awning cleaning, screen cleaning, skylight cleaning, and exterior light-fixture cleaning, subject to quote and availability
 
 ## Primary pages
-- [Hinsdale local overview](${page('/hinsdale/')}) — services, process, local work, owner, and local property context
+- [Hinsdale local overview](${page('/hinsdale/')}) — services, real local business examples, the local team, and property context
 - [Local team and story](${page('/team/')}) — owner, crew, opening history, operating standards, and community involvement
 - [XML sitemap](${page('/sitemap-index.xml')})
 
@@ -38,7 +38,7 @@ ${servicePages}
 
 ## Content boundaries
 - This is an informational local marketing site, not the franchise booking system.
-- Estimate and contact actions hand off to the official local FISH franchise website.
+- Quote and contact actions hand off to the official local FISH franchise website.
 - Public service claims should be interpreted only as written. Final scope, price, availability, access method, and timing are confirmed by the local franchise.
 - The Hinsdale overview links to the verified Google Business Profile.
 `, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });

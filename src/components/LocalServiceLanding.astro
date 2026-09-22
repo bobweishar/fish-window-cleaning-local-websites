@@ -29,7 +29,7 @@ const source = `${page.areaSlug}-${page.serviceSlug}`;
       <h1>{page.headline}</h1>
       <p>{page.copy}</p>
       <div class="button-row">
-        <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free estimate</a>
+        <a class="button" href={estimateLink(`${source}-hero`)} data-track="estimate_click" data-location={`${source}-hero`}>Request a free quote</a>
         <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location={`${source}-hero`}>Call {site.phoneDisplay}</a>
       </div>
     </div>
@@ -37,14 +37,14 @@ const source = `${page.areaSlug}-${page.serviceSlug}`;
   </section>
 
   <section class="local-reasons section">
-    <div class="section-heading"><h2>What the estimate covers.</h2></div>
+    <div class="section-heading"><h2>What your quote covers.</h2></div>
     <div class="scope-grid">
       {page.reasons.map((reason) => <article><h3>{reason.title}</h3><p>{reason.copy}</p></article>)}
     </div>
   </section>
 
   <section class="local-service-proof section section--ink">
-    <div><h2>One team from estimate through service.</h2><p>The same franchise answers the phone, writes the estimate, and completes the work.</p></div>
+    <div><h2>One team from quote through service.</h2><p>The same franchise answers the phone, prepares the quote, and completes the work.</p></div>
     <div class="local-service-proof__links">
       <a href={`/services/${service.slug}/`}>{service.name} details <span aria-hidden="true">→</span></a>
       <a href={`/service-areas/${area.slug}/`}>More services in {area.name} <span aria-hidden="true">→</span></a>

@@ -1,13 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EstimateBand from '../components/EstimateBand.astro';
-import CustomerLogoStrip from '../components/CustomerLogoStrip.astro';
 import { estimateLink, googleProfile, site } from '../data/site';
 
-const faqs = [
-  ['Do you clean homes and downtown businesses?', 'Yes. The team cleans residential windows as well as storefronts, offices, restaurants, and other commercial properties.'],
-  ['How do you handle older or divided-light windows?', 'We confirm the window type, condition, and access during the estimate, then recommend the appropriate method.'],
-  ['Can you work around business hours?', 'Yes. Share the hours and access requirements during the estimate so the local team can confirm a workable schedule.'],
+const services = [
+  {
+    name: 'Residential windows',
+    copy: 'Interior and exterior glass, screens, tracks, and divided panes.',
+    href: '/hinsdale/residential-window-cleaning/',
+    image: '/images/jobs/4312.webp',
+    width: 530,
+    height: 720,
+    alt: 'FISH technician cleaning upper-story windows on a brick Chicago-area home',
+  },
+  {
+    name: 'Commercial windows',
+    copy: 'Storefronts, offices, restaurants, and recurring routes.',
+    href: '/hinsdale/commercial-window-cleaning/',
+    image: '/images/jobs/4542.webp',
+    width: 576,
+    height: 720,
+    alt: 'FISH technician cleaning a local storefront entrance',
+  },
+  {
+    name: 'Gutter cleaning',
+    copy: 'Leaves and buildup cleared before they become a problem.',
+    href: '/hinsdale/gutter-cleaning/',
+    image: '/images/hinsdale/gutter-dave.webp',
+    width: 1200,
+    height: 901,
+    alt: 'FISH technician clearing leaves and buildup from a nearby gutter',
+  },
+  {
+    name: 'Pressure washing',
+    copy: 'Careful cleaning for approved exterior surfaces.',
+    href: '/hinsdale/pressure-washing/',
+    image: '/images/jobs/4066.webp',
+    width: 248,
+    height: 310,
+    alt: 'FISH technician pressure washing a brick entryway',
+  },
 ];
 ---
 
@@ -18,10 +50,10 @@ const faqs = [
 >
   <section class="hero">
     <div class="hero-copy">
-      <h1>The glass is different here.</h1>
-      <p class="hero-lede">Older divided panes. Tall entries. Downtown storefronts. This local FISH team estimates the property in front of us and cleans it carefully.</p>
+      <h1>Window cleaning for Hinsdale homes and businesses.</h1>
+      <p class="hero-lede">This locally owned and operated FISH Window Cleaning team provides careful, reliable service for homes, storefronts, and offices.</p>
       <div class="button-row">
-        <a class="button" href={estimateLink('home-hero')} data-track="estimate_click" data-location="home-hero">Request a free estimate</a>
+        <a class="button" href={estimateLink('home-hero')} data-track="estimate_click" data-location="home-hero">Request a free quote</a>
         <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location="home-hero">Call {site.phoneDisplay}</a>
       </div>
     </div>
@@ -49,86 +81,68 @@ const faqs = [
 
   <section class="path-section section" aria-labelledby="choose-path">
     <div class="section-heading" data-reveal>
-      <h2 id="choose-path">For the house. For the storefront.</h2>
+      <h2 id="choose-path">For the house. For the storefront. For the office.</h2>
+      <p>Window cleaning, gutters, and pressure washing from one local crew.</p>
     </div>
-    <div class="path-grid">
-      <a class="path-panel path-panel--home" href="/hinsdale/residential-window-cleaning/" data-reveal>
-        <img src="/images/jobs/4312.webp" width="530" height="720" alt="Local FISH technician cleaning upper-story windows on a brick Chicago-area home" loading="lazy" decoding="async" />
-        <div>
-          <h3>Residential window cleaning</h3>
-          <span>Interior and exterior glass, screens, tracks, divided panes, and hard-to-reach windows.</span>
-          <strong>See residential service <b aria-hidden="true">→</b></strong>
-        </div>
-      </a>
-      <a class="path-panel path-panel--business" href="/hinsdale/commercial-window-cleaning/" data-reveal>
-        <img src="/images/jobs/4486.webp" width="587" height="720" alt="Red FISH van outside a Chicago-area commercial window cleaning job in winter" loading="lazy" decoding="async" />
-        <div>
-          <h3>Commercial window cleaning</h3>
-          <span>Storefronts, offices, restaurants, and recurring service built around business hours.</span>
-          <strong>See commercial service <b aria-hidden="true">→</b></strong>
-        </div>
-      </a>
-    </div>
-    <div class="more-services" data-reveal>
-      <a href="/hinsdale/gutter-cleaning/"><strong>Gutter cleaning</strong><span>After leaf drop. Before the first freeze.</span><b aria-hidden="true">→</b></a>
-      <a href="/hinsdale/pressure-washing/"><strong>Pressure washing</strong><span>Approved exterior surfaces</span><b aria-hidden="true">→</b></a>
+    <div class="service-rail" data-reveal>
+      {services.map((service) => (
+        <a class="service-tile" href={service.href}>
+          <img src={service.image} width={service.width} height={service.height} alt={service.alt} loading="lazy" decoding="async" />
+          <div>
+            <h3>{service.name}</h3>
+            <p>{service.copy}</p>
+            <span>See service <b aria-hidden="true">→</b></span>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 
   <section id="hinsdale-properties" class="local-proof section section--mist">
     <div class="local-proof__copy" data-reveal>
       <h2>Hinsdale homes have character.</h2>
-      <p>An older divided-light window is not a broad modern pane. Storms, screens, landscaping, and access all change the work. We confirm the method at the estimate.</p>
+      <p>We take great care with the things that make Hinsdale homes unique and special. Storms, screens, landscaping, and access all change the work. We confirm the method when we prepare your quote.</p>
       <a class="text-link" href="/hinsdale/residential-window-cleaning/">See residential window cleaning <span aria-hidden="true">→</span></a>
     </div>
     <figure class="local-proof__media" data-reveal>
-      <img src="/images/local/downtown-hinsdale.webp" width="1400" height="813" alt="Historic storefronts and mature trees in downtown Hinsdale" loading="lazy" decoding="async" />
-      <figcaption class="sr-only">Washington Street, downtown Hinsdale. <a href="https://commons.wikimedia.org/wiki/File:Downtown_Hinsdale_Block.JPG" target="_blank" rel="noopener noreferrer">Photo by Teemu08, licensed CC BY-SA 3.0.</a></figcaption>
+      <img src="/images/hinsdale/condo.webp" width="1600" height="1200" alt="Hinsdale condominium building with large multi-pane windows served by the local team" loading="lazy" decoding="async" />
     </figure>
   </section>
 
-  <CustomerLogoStrip />
-
-  <section id="local-work" class="work-section section">
+  <section id="hinsdale-businesses" class="hinsdale-businesses section" aria-labelledby="hinsdale-businesses-heading">
     <div class="section-heading" data-reveal>
-      <h2>Work from the local team.</h2>
+      <h2 id="hinsdale-businesses-heading">A few Hinsdale businesses we clean.</h2>
+      <p>The team serves more than a dozen commercial clients in town, from storefronts to community spaces.</p>
     </div>
-    <div class="work-grid">
-      <figure class="work-tall" data-reveal><img src="/images/jobs/4260.webp" width="476" height="720" alt="FISH professional cleaning an exterior coach light on a brick home" loading="lazy" decoding="async" /><figcaption>Exterior detail care</figcaption></figure>
-      <figure data-reveal><img src="/images/jobs/4542.webp" width="576" height="720" alt="FISH professional cleaning a local storefront entrance" loading="lazy" decoding="async" /><figcaption>Commercial route work</figcaption></figure>
-      <figure data-reveal><img src="/images/jobs/4503.webp" width="720" height="604" alt="Before and after photographs of a gutter cleaned by the local FISH team" loading="lazy" decoding="async" /><figcaption>Gutter cleaning</figcaption></figure>
-      <figure class="work-wide" data-reveal><img src="/images/jobs/window-squeegee-closeup.webp" width="2048" height="1365" alt="FISH professional drawing a squeegee across soapy window glass" loading="lazy" /><figcaption>Window cleaning</figcaption></figure>
+    <div class="business-photo-strip">
+      <figure data-reveal>
+        <img src="/images/hinsdale/browning.webp" width="1400" height="523" alt="Browning and Sons storefront in downtown Hinsdale" loading="lazy" decoding="async" />
+        <figcaption>Browning &amp; Sons</figcaption>
+      </figure>
+      <figure data-reveal>
+        <img src="/images/hinsdale/the-pearl.webp" width="1400" height="695" alt="The Pearl of Hinsdale community building" loading="lazy" decoding="async" />
+        <figcaption>The Pearl of Hinsdale</figcaption>
+      </figure>
+      <figure data-reveal>
+        <img src="/images/hinsdale/pages.webp" width="900" height="811" alt="Page's Restaurant storefront in downtown Hinsdale" loading="lazy" decoding="async" />
+        <figcaption>Page's Restaurant</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section class="owner-section section">
-    <div class="owner-photo" data-reveal>
-      <img src="/images/dave-weishar.webp" width="288" height="214" alt="Dave Weishar, owner of the local FISH Window Cleaning franchise" loading="lazy" decoding="async" />
-      <span>Dave Weishar<br />Local owner</span>
+  <section class="home-team section section--mist">
+    <div class="home-team__photo" data-reveal>
+      <img src="/images/jobs/3800.webp" width="310" height="236" alt="Members of the local FISH Window Cleaning crew together in their red uniforms" loading="lazy" decoding="async" />
     </div>
-    <div class="owner-copy" data-reveal>
-      <h2>Locally owned.</h2>
-      <p>Your estimate and service stay with this locally owned FISH franchise—not a lead broker.</p>
-      <div class="owner-links">
+    <div class="home-team__copy" data-reveal>
+      <h2>The local team behind the work.</h2>
+      <p>The same locally owned FISH team answers the phone, prepares the quote, and completes the work.</p>
+      <div class="home-team__links">
         <a class="text-link" href="/team/">Meet the local team <span aria-hidden="true">→</span></a>
         <a class="quiet-link" href={googleProfile.url} target="_blank" rel="noopener noreferrer" data-track="google_reviews_click" data-location="home-owner">Google reviews <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
 
-  <section id="faq" class="faq-section faq-section--home section">
-    <div class="section-heading" data-reveal>
-      <h2>Questions.</h2>
-    </div>
-    <div class="faq-list">
-      {faqs.map(([question, answer]) => (
-        <details data-reveal>
-          <summary>{question}<span aria-hidden="true">+</span></summary>
-          <p>{answer}</p>
-        </details>
-      ))}
-    </div>
-  </section>
-
-  <EstimateBand source="home-close" heading="Request a free estimate." />
+  <EstimateBand source="home-close" heading="Request a free quote." />
 </BaseLayout>

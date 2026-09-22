@@ -36,7 +36,7 @@ export const estimateLink = (source: string) =>
 
 export const formRedirects = {
   estimate: {
-    label: 'estimate request',
+    label: 'quote request',
     destination: `${site.officialPage}contact/window-cleaning-estimate`,
   },
   contact: {

@@ -15,7 +15,7 @@ const { campaign } = Astro.props;
       <h1>{campaign.headline}</h1>
       <p>{campaign.copy}</p>
       <div class="button-row">
-        <a class="button" href={estimateLink(`${campaign.slug}-hero`)} data-track="estimate_click" data-location={`${campaign.slug}-hero`}>Request a fall estimate</a>
+        <a class="button" href={estimateLink(`${campaign.slug}-hero`)} data-track="estimate_click" data-location={`${campaign.slug}-hero`}>Request a fall quote</a>
         <a class="button button--outline" href={site.phoneHref} data-track="phone_click" data-location={`${campaign.slug}-hero`}>Call {site.phoneDisplay}</a>
       </div>
     </div>
@@ -31,7 +31,7 @@ const { campaign } = Astro.props;
   <section class="campaign-callout section section--ink">
     <h2>Book before freezing weather.</h2>
     <p>Fall service depends on weather and crew availability.</p>
-    <a class="button button--light" href={estimateLink(`${campaign.slug}-mid`)} data-track="estimate_click" data-location={`${campaign.slug}-mid`}>Request a fall estimate</a>
+    <a class="button button--light" href={estimateLink(`${campaign.slug}-mid`)} data-track="estimate_click" data-location={`${campaign.slug}-mid`}>Request a fall quote</a>
   </section>
 
   <EstimateBand source={`${campaign.slug}-close`} heading={campaign.closeHeading} />
