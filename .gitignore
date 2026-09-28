@@ -7,3 +7,4 @@ dist/
 !.env.example
 .impeccable/review/
 bridge/
+.vercel
